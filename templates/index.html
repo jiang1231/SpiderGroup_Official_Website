@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}爬虫组{% endblock %}
+{% block body_attribs %}
+{% endblock %}
+{% block head %}
+{{ super() }}
+    <style>
+    .footer-wrap {
+        border-top: 1px solid #c7d4e0;
+        width: 100%;
+        min-width: 1024px;
+        margin-top: 300px;
+    }
+    .footer {
+    padding-top: 14px;
+    margin-bottom: 20px;
+    }
+    .cbody {
+    width: 1024px;
+    margin: 0 auto;
+    }
+    .clearfix {
+    +display: inline-block;
+    }
+    .footer-nav {
+    width: 104px;
+    padding-left: 20px;
+    float: left;
+}
+    ul, ol {
+    list-style-type: none;
+    }
+    </style>
+{% endblock %}
+{% block page_content %}
+    <div class="jumbotron" style="margin-top:-30px;max-width: 1920px;height: 300px;background: url('{{ url_for('static', filename='img/banner.jpg') }}') top/cover no-repeat">
+    </div>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="{{ url_for('static', filename='img/search.jpg') }}" width="200px"/>
+            <a href="{{ url_for('check') }}">
+                <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">中国联通</button></p>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <img src="{{ url_for('static', filename='img/government.jpg') }}" width="200px"/>
+            <a href="{{ url_for('institution') }}">
+                <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">政府机构</button></p>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <img src="{{ url_for('static', filename='img/remain2.jpg') }}" width="200px"/>
+            <a href="#">
+                <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 70px">待定</button></p>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <img src="{{ url_for('static', filename='img/remain1.jpg') }}" width="200px"/>
+            <a href="#">
+                <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 70px">待定</button></p>
+            </a>
+        </div>
+    </div>
+    </div>
+<!--begin footer-->
+<div class="footer-wrap">
+  <div class="footer cbody clearfix">
+       <p style="margin-left: 30%;font-size: 15px;">
+           <span class="glyphicon glyphicon-earphone">
+           </span> copyright © 联金所爬虫组  0877-88888888 (周一至周五)
+       </p>
+
+  </div>
+</div>
+{% endblock %}

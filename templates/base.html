@@ -1,0 +1,65 @@
+{% extends "_base.html" %}
+
+{% block title %}项目进度管理系统{% endblock %}
+{% block body_attribs %}
+
+{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='spider.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='spider.ico') }}" type="image/x-icon">
+
+
+
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="{{ url_for('static', filename='js/vendor/html5shiv.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/vendor/respond.min.js') }}"></script>
+    <![endif]-->
+
+
+{% endblock %}
+
+{% block navbar %}
+    <style>
+      body {
+/*          padding-bottom: 10px;
+*//*          background-image:url("http://o6gcipdzi.bkt.clouddn.com/background2.jpg");
+          background-attachment:fixed;*/
+      }
+
+    </style>
+    <!-- Static navbar -->
+      <nav class="navbar navbar-default navbar-lg" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-5">
+            <span class="sr-only">Toggle navigation</span>
+          </button>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+          <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/pm5.png') }}" style="margin: 15px 0px 0px 30px;height:50px; float: left;"/></a>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-5">
+          <ul class="nav navbar-nav">
+              <li><a href="{{ url_for('index') }}"> 主页 </a></li>
+              <li><a href="{{ url_for('check') }}"> 联通查询 </a></li>
+              <li><a href="{{ url_for('institution') }}"> 政府机构查询 </a></li>
+
+           </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+{% endblock %}
+
+{% block content %}
+{% block page_content %}{% endblock %}
+
+{% endblock %}
+
+{#{% block scripts %}#}
+{#{{ super() }}#}
+{#{{ moment.include_moment() }}#}
+{#{% endblock %}#}
