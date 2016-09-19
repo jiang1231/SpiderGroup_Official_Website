@@ -1,6 +1,6 @@
 {% extends "_base.html" %}
 
-{% block title %}项目进度管理系统{% endblock %}
+{% block title %}征信大数据{% endblock %}
 {% block body_attribs %}
 
 {% endblock %}
@@ -40,13 +40,14 @@
           </button>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-          <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/pm5.png') }}" style="margin: 15px 0px 0px 30px;height:50px; float: left;"/></a>
+          <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/pachongzu.png') }}" style="margin: 15px 0px 0px 30px;height:50px; float: left;"/></a>
 
         <div class="collapse navbar-collapse" id="navbar-collapse-5">
           <ul class="nav navbar-nav">
-              <li><a href="{{ url_for('index') }}"> 主页 </a></li>
-              <li><a href="{{ url_for('check') }}"> 联通查询 </a></li>
-              <li><a href="{{ url_for('institution') }}"> 政府机构查询 </a></li>
+              <li><a href="{{ url_for('index') }}" style="font-size: 18px;"> 主页 </a></li>
+              <li><a href="{{ url_for('check') }}" style="font-size: 18px;"> 运营商 </a></li>
+              <li><a href="{{ url_for('institution') }}"style="font-size: 18px;"> 政府机构查询 </a></li>
+              <li><a href="{{ url_for('dishonestCheck') }}"style="font-size: 18px;"> 失信被执行人 </a></li>
 
            </ul>
         </div><!-- /.navbar-collapse -->

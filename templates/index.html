@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}爬虫组{% endblock %}
+{#{% block title %}爬虫组{% endblock %}#}
 {% block body_attribs %}
 {% endblock %}
 {% block head %}
@@ -40,7 +40,7 @@
         <div class="col-md-3">
             <img src="{{ url_for('static', filename='img/search.jpg') }}" width="200px"/>
             <a href="{{ url_for('check') }}">
-                <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">中国联通</button></p>
+                <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 65px">运营商</button></p>
             </a>
         </div>
         <div class="col-md-3">
@@ -50,15 +50,15 @@
             </a>
         </div>
         <div class="col-md-3">
-            <img src="{{ url_for('static', filename='img/remain2.jpg') }}" width="200px"/>
+            <img src="{{ url_for('static', filename='img/remain2-gray.jpg') }}" width="200px"/>
             <a href="#">
-                <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 70px">待定</button></p>
+                <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 40px">失信被执行人</button></p>
             </a>
         </div>
         <div class="col-md-3">
-            <img src="{{ url_for('static', filename='img/remain1.jpg') }}" width="200px"/>
-            <a href="#">
-                <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 70px">待定</button></p>
+            <img src="{{ url_for('static', filename='img/remain1-gray.jpg') }}" width="200px"/>
+            <a href="{{ url_for('dishonestCheck') }}">
+                <p><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">被执行人</button></p>
             </a>
         </div>
     </div>

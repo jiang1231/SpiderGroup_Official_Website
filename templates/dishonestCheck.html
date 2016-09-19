@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{#{% block title %}爬虫组{% endblock %}#}
+{% block body_attribs %}
+{% endblock %}
+{% block head %}
+{{ super() }}
+    <script>
+    $(document).ready(function() {
+        var flag = 1;
+        $("#checkButton").click(function () {
+            if ($("#name").val()) {
+{#                $("#checkButton").attr("disabled", true);#}
+                $.post('{{ url_for('dishonestCheck') }}',
+                        {
+                            name: $("#name").val(),
+                            card_num: $('#card_num').val(),
+                            flag: flag
+                        },
+                        function (data, status) {
+                            alert(data);
+
+                        });
+            }
+            else {
+                $("#name").attr("style", "border-style: solid;border-color:red;")
+            }
+        });
+        $("#company_flag").click(function () {
+            flag = 1;
+        })
+        $("#person_flag").click(function () {
+            flag = 0;
+        })
+    });
+    </script>
+{% endblock %}
+{% block page_content %}
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <p> <strong><span style="font-size: 30px;color: #1abc9c">失</span>信被执行人 </strong></p>
+            <form id="searchForm" class="form-horizontal" >
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">企业名称</label>
+                    <div class="col-sm-9">
+                        <input type="text" class=" form-control" id="name" name="name">
+                    </div>
+                    <div class="col-sm-1">
+                        <span style="color: red">*</span>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="card_num" class="col-sm-2 control-label">卡号</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="card_num" name="card_num">
+                    </div>
+                </div>
+                <div class="radio" style="display: inline-block">
+                    <div class="col-sm-offset-5 col-sm-8">
+                    <label>
+                    <input type="radio" name="flag" id="company_flag" value="1" checked>
+                    企业号码
+                    </label></div>
+                </div>
+                <div class="radio" style="display: inline-block">
+                    <div class="col-sm-offset-4 col-sm-8">
+                    <label>
+                    <input type="radio" name="flag" id="person_flag" value="2">
+                    个人号码
+                    </label></div>
+                </div>
+                <div class="col-sm-offset-2 col-sm-9">
+                    <a role="button" class="btn btn-primary btn-block" id="checkButton"> 查询 </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div id="result">
+        </div>
+    </div>
+    </div>
+{% endblock %}

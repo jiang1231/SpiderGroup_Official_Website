@@ -357,7 +357,7 @@ def chinaUnicomAPI(phone=None, password=None):  # API
 # end
 
 if __name__ == '__main__':
-    result = chinaUnicomAPI('13267175437','251314')
+    result = chinaUnicomAPI('13267175437', '251314')
     # for item in result.items():
     #     print item
     print result['t_china_unicom_uesr'][0].keys()

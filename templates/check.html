@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}爬虫组{% endblock %}
+{#{% block title %}爬虫组{% endblock %}#}
 {% block body_attribs %}
 {% endblock %}
 {% block head %}
@@ -35,11 +35,24 @@
     <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <p> <strong><span style="font-size: 30px;color: #1abc9c">中</span>国联通查询 </strong></p>
-            <form id="searchForm" >
-                <label>手机号：</label><input type="text" id='content' name="content"/>
-                <label>密码：</label> <input type="password"id="password" name="password"/>
-                <a role="button" class="btn btn-primary" id="searchButton"> 查询 </a>
+            <p> <strong><span style="font-size: 30px;color: #1abc9c">运</span>营商查询 </strong></p>
+            <form class="form-horizontal" id="searchForm" >
+                <div class="form-group" style="display: inline-block;">
+                    <label class="col-sm-4 control-label">手机号:</label>
+                    <div class="col-sm-8">
+                        <input type="text" id='content' name="content" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group" style="display: inline-block;">
+                    <label class="col-sm-4 control-label">密码:</label>
+                    <div class="col-sm-8">
+                    <input type="password"id="password" name="password" class="form-control"/></div>
+                </div>
+                <div class="form-group" style="display: inline-block;">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <a role="button" class="btn btn-primary" id="searchButton" > 查询 </a>
+                </div>
+                    </div>
             </form>
         </div>
     </div>

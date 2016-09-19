@@ -2,7 +2,7 @@
 from flask import Flask, render_template, request
 # from flask.ext.moment import Moment
 from china_unicom.china_unicom_search import chinaUnicomAPI
-from models import db, Institution
+from models import db, Institution, DishonestExecutor
 from sqlalchemy import distinct
 import json
 
@@ -80,6 +80,28 @@ def get_mess():
         i = Institution.query.filter_by(province=province, city=city, sub_city=sub_city, town_street=town_street).all()
     # print i
     return render_template('government_output.html', institutions=i)
+
+
+@app.route('/dishonestCheck', methods=['GET', 'POST'])
+def dishonestCheck():
+    if request.method == 'POST':
+        company_name = request.form.get('name')
+        card_num = request.form.get('card_num')
+        flag = request.form.get('flag')
+        if flag:
+            d = DishonestExecutor.query.filter(DishonestExecutor.name.like(
+                "%{}%".format(company_name)), DishonestExecutor.card_num.like("%{}%".format(card_num)),
+                DishonestExecutor.flag == 1).first()
+        else:
+            if len(card_num) == 18:
+                card_num = card_num[:10] + "****" + card_num[14:]
+            d = DishonestExecutor.query.filter(DishonestExecutor.name.like(
+                "%{}%".format(company_name)), DishonestExecutor.card_num.like("%{}%".format(card_num)),
+                DishonestExecutor.flag == 1).first()
+        print '{} {} {}'.format(d.name, d.card_num, d.flag)
+        return '{} {} {}'.format(d.name, d.card_num, d.flag)
+    return render_template('dishonestCheck.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
