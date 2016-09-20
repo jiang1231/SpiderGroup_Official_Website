@@ -9,16 +9,17 @@
         var flag = 1;
         $("#checkButton").click(function () {
             if ($("#name").val()) {
-{#                $("#checkButton").attr("disabled", true);#}
-                $.post('{{ url_for('dishonestCheck') }}',
+                $("#checkButton").attr("disabled", true);
+                $.post('{{ url_for('dishonest_check') }}',
                         {
                             name: $("#name").val(),
                             card_num: $('#card_num').val(),
                             flag: flag
                         },
                         function (data, status) {
-                            alert(data);
-
+                            $('#result').empty();
+                            $('#result').append(data);
+                            $("#checkButton").attr('disabled', false);
                         });
             }
             else {
@@ -33,15 +34,30 @@
         })
     });
     </script>
+    <style>
+        .my-form {
+        -moz-box-shadow: 5px 5px 5px #888888; /* 老的 Firefox */
+{#        box-shadow: 4px 4px 4px #888888;#}
+        top: 80px;
+        background-color: #34495e;
+        border-radius: 12px;
+    }
+    div.my-input {
+        background-color: #f1f3f5;
+        padding-top: 30px;
+        border-radius: 0px 0px 10px 10px;
+    }
+    </style>
 {% endblock %}
 {% block page_content %}
     <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <p> <strong><span style="font-size: 30px;color: #1abc9c">失</span>信被执行人 </strong></p>
-            <form id="searchForm" class="form-horizontal" >
+            <form id="searchForm" class="my-form form-horizontal" >
+                <p style="padding: 10px 0px 10px 20px;color: #f1f3f5"> <strong><span style="font-size: 30px;color: #1abc9c">失</span>信被执行人 </strong></p>
+                <div class="my-input">
                 <div class="form-group">
-                    <label for="name" class="col-sm-2 control-label">企业名称</label>
+                    <label for="name" class="col-sm-2 control-label">名称</label>
                     <div class="col-sm-9">
                         <input type="text" class=" form-control" id="name" name="name">
                     </div>
@@ -70,8 +86,12 @@
                     个人号码
                     </label></div>
                 </div>
-                <div class="col-sm-offset-2 col-sm-9">
-                    <a role="button" class="btn btn-primary btn-block" id="checkButton"> 查询 </a>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-9" style="margin-bottom: 30px">
+                        <a role="button" class="btn btn-primary btn-block" id="checkButton"> 查询 </a>
+                    </div>
+                </div>
+
                 </div>
             </form>
         </div>
@@ -79,7 +99,7 @@
 
 
     <div class="row">
-        <div id="result">
+        <div id="result" style="margin-top: 80px">
         </div>
     </div>
     </div>

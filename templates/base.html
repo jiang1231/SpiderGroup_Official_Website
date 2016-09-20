@@ -6,8 +6,8 @@
 {% endblock %}
 {% block head %}
 {{ super() }}
-<link rel="shortcut icon" href="{{ url_for('static', filename='spider.ico') }}" type="image/x-icon">
-<link rel="icon" href="{{ url_for('static', filename='spider.ico') }}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ url_for('static', filename='spider_flask.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='spider_flask.ico') }}" type="image/x-icon">
 
 
 
@@ -47,7 +47,9 @@
               <li><a href="{{ url_for('index') }}" style="font-size: 18px;"> 主页 </a></li>
               <li><a href="{{ url_for('check') }}" style="font-size: 18px;"> 运营商 </a></li>
               <li><a href="{{ url_for('institution') }}"style="font-size: 18px;"> 政府机构查询 </a></li>
-              <li><a href="{{ url_for('dishonestCheck') }}"style="font-size: 18px;"> 失信被执行人 </a></li>
+              <li><a href="{{ url_for('dishonest_check') }}"style="font-size: 18px;"> 失信被执行人 </a></li>
+              <li><a href="{{ url_for('dishonest_person') }}"style="font-size: 18px;"> 被执行人 </a></li>
+              <li><a href="#"style="font-size: 18px;"> 征信报告 </a></li>
 
            </ul>
         </div><!-- /.navbar-collapse -->

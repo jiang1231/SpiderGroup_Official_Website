@@ -49,3 +49,21 @@ class DishonestExecutor(db.Model):
     def __repr__(self):
         return '<DishonestExecutor {}>'.format(self.id)
 
+
+class ExecutedPerson(db.Model):
+    __tablename__ = 't_zhixing_valid'
+
+    id = db.Column(db.Integer, primary_key=True)
+    alter_time = db.Column(db.DateTime)
+    sys_id = db.Column(db.Integer)
+    name = db.Column(db.String(128))
+    card_num = db.Column(db.String(64))
+    case_code = db.Column(db.String(128))
+    reg_date = db.Column(db.String(128))
+    court_name = db.Column(db.String(128))
+    execute_money = db.Column(db.String(64))
+
+    def __repr__(self):
+        return '<DishonestExecutor {}>'.format(self.name)
+
+

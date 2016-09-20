@@ -2,7 +2,7 @@
 from flask import Flask, render_template, request
 # from flask.ext.moment import Moment
 from china_unicom.china_unicom_search import chinaUnicomAPI
-from models import db, Institution, DishonestExecutor
+from models import db, Institution, DishonestExecutor, ExecutedPerson
 from sqlalchemy import distinct
 import json
 
@@ -23,16 +23,31 @@ def check():
     return render_template('check.html')
 
 
-@app.route('/get_data/<number>/<password>')
-def get_data(number, password):
+@app.route('/get_data_union/<number>/<password>')
+def get_data_union(number, password):
     r = chinaUnicomAPI(number, password)
     try:
         r['t_china_unicom_uesr']
     except KeyError:
         return 'error'
-
     return render_template('output.html', user=r['t_china_unicom_uesr'][0])
 
+
+@app.route('/get_data_mobile/<number>/<password>/<vcode>')
+def get_data_mobile(number, password, vcode):
+    # r = chinaUnicomAPI(number, password)
+    # try:
+    #     r['t_china_unicom_uesr']
+    # except KeyError:
+    #     return 'error'
+    #
+    # return render_template('output.html', user=r['t_china_unicom_uesr'][0])
+    return "{} {} {}".format(number, password, vcode)
+
+
+@app.route('/check_phone_number/<number>')
+def check_phone_number(number):
+    return 'mobile'
 
 @app.route('/institution')
 def institution():
@@ -82,26 +97,50 @@ def get_mess():
     return render_template('government_output.html', institutions=i)
 
 
-@app.route('/dishonestCheck', methods=['GET', 'POST'])
-def dishonestCheck():
+@app.route('/dishonest_check', methods=['GET', 'POST'])
+def dishonest_check():
     if request.method == 'POST':
         company_name = request.form.get('name')
-        card_num = request.form.get('card_num')
-        flag = request.form.get('flag')
+        card_num = request.form.get('card_num') if request.form.get('card_num') else ''
+        flag = int(request.form.get('flag'))
         if flag:
             d = DishonestExecutor.query.filter(DishonestExecutor.name.like(
-                "%{}%".format(company_name)), DishonestExecutor.card_num.like("%{}%".format(card_num)),
-                DishonestExecutor.flag == 1).first()
+                "{}%".format(company_name)), DishonestExecutor.card_num.ilike("%{}%".format(card_num))).all()
         else:
             if len(card_num) == 18:
                 card_num = card_num[:10] + "****" + card_num[14:]
+            print 'in'
             d = DishonestExecutor.query.filter(DishonestExecutor.name.like(
-                "%{}%".format(company_name)), DishonestExecutor.card_num.like("%{}%".format(card_num)),
-                DishonestExecutor.flag == 1).first()
-        print '{} {} {}'.format(d.name, d.card_num, d.flag)
-        return '{} {} {}'.format(d.name, d.card_num, d.flag)
-    return render_template('dishonestCheck.html')
+                "{}%".format(company_name)), DishonestExecutor.card_num.ilike("%{}%".format(card_num))).all()
+        # print '{} {} {}'.format(d.name, d.card_num, d.flag)
+        if d:
+            return render_template('dishonest_executor_output.html', DishonestExecutors=d)
+        else:
+            return u'找不到相关信息'
+    return render_template('dishonest_check.html')
 
+
+@app.route('/dishonest_person', methods=['GET', 'POST'])
+def dishonest_person():
+    if request.method == 'POST':
+        company_name = request.form.get('name')
+        card_num = request.form.get('card_num') if request.form.get('card_num') else ''
+        # print len(card_num), card_num
+        if len(card_num) >= 10:
+            # card_num = card_num[:10] + "****" + card_num[15:]
+            card_num = card_num[:10]
+            # print card_num
+            # d = ExecutedPerson.query.filter(ExecutedPerson.name.ilike(
+            #     "{}%".format(company_name)), ExecutedPerson.card_num == card_num).all()
+        # else:
+        d = ExecutedPerson.query.filter(ExecutedPerson.name.like(
+            "{}%".format(company_name)), ExecutedPerson.card_num.ilike("%{}%".format(card_num))).all()
+        # print '{} {} {}'.format(d.name, d.card_num, d.flag)
+        if d:
+            return render_template('dishonest_person_output.html', DishonestPeople=d)
+        else:
+            return u'找不到相关信息'
+    return render_template('dishonest_person.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

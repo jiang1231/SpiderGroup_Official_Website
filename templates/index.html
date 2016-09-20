@@ -4,7 +4,7 @@
 {% endblock %}
 {% block head %}
 {{ super() }}
-    <style>
+    <style xmlns="http://www.w3.org/1999/html">
     .footer-wrap {
         border-top: 1px solid #c7d4e0;
         width: 100%;
@@ -30,47 +30,108 @@
     ul, ol {
     list-style-type: none;
     }
+    .case-wrap {
+    width: 1024px;
+    margin: 0 auto;
+    padding-top: 26px;
+    padding-bottom: 26px;
+    border-top: 1px solid #c7d4e0;
+}
+    .companyProductsWrap {
+    position: relative;
+    }
+    .word {
+    position: absolute;
+    width: 90px;
+    text-align: center;
+    background: #ffffff;
+    margin-left: 50%;
+    left: -45px;
+    top: -18px;
+    font-size: 20px;
+    font-family: "微软雅黑";
+}
     </style>
 {% endblock %}
 {% block page_content %}
     <div class="jumbotron" style="margin-top:-30px;max-width: 1920px;height: 300px;background: url('{{ url_for('static', filename='img/banner.jpg') }}') top/cover no-repeat">
     </div>
-    <div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <img src="{{ url_for('static', filename='img/search.jpg') }}" width="200px"/>
-            <a href="{{ url_for('check') }}">
-                <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 65px">运营商</button></p>
-            </a>
+    <div class="container" style="margin-bottom: 60px">
+    <div class="row" style="margin-top: 50px">
+        <div class="case-wrap companyProductsWrap">
+            <div class="word">
+                征信审核
+            </div>
         </div>
-        <div class="col-md-3">
-            <img src="{{ url_for('static', filename='img/government.jpg') }}" width="200px"/>
-            <a href="{{ url_for('institution') }}">
-                <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">政府机构</button></p>
-            </a>
+        <div class="col-md-4">
+            <div style="margin-left: 22%">
+                <a href="{{ url_for('dishonest_check') }}">
+                    <img src="{{ url_for('static', filename='img/remain2.jpg') }}" width="200px"/>
+                    <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 40px">失信被执行人</button></p>
+                </a>
+            </div>
         </div>
-        <div class="col-md-3">
-            <img src="{{ url_for('static', filename='img/remain2-gray.jpg') }}" width="200px"/>
-            <a href="#">
-                <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 40px">失信被执行人</button></p>
-            </a>
+        <div class="col-md-4">
+            <div style="margin-left: 22%">
+                <a href="{{ url_for('dishonest_person') }}">
+                    <img src="{{ url_for('static', filename='img/remain1.jpg') }}" width="200px"/>
+                    <p><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">被执行人</button></p>
+                </a>
+            </div>
         </div>
-        <div class="col-md-3">
-            <img src="{{ url_for('static', filename='img/remain1-gray.jpg') }}" width="200px"/>
-            <a href="{{ url_for('dishonestCheck') }}">
-                <p><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">被执行人</button></p>
-            </a>
+        <div class="col-md-4">
+            <div style="margin-left: 22%">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/credit_report.png') }}" width="200px"/>
+                    <p><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">征信报告</button></p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 50px">
+        <div class="case-wrap companyProductsWrap">
+            <div class="word">
+                Others
+            </div>
+        </div>
+         <div class="col-md-4">
+             <div style="margin-left: 22%">
+                 <a href="{{ url_for('check') }}">
+                    <img src="{{ url_for('static', filename='img/search.jpg') }}" width="200px"/>
+                    <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 65px">运营商</button></p>
+                </a>
+             </div>
+        </div>
+        <div class="col-md-4">
+            <div style="margin-left: 22%">
+                <img src="{{ url_for('static', filename='img/government.jpg') }}" width="200px"/>
+                <a href="{{ url_for('institution') }}">
+                    <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">政府机构</button></p>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div style="margin-left: 22%">
+                <a href="{{ url_for('institution') }}">
+                    <img src="{{ url_for('static', filename='img/money_judge_gray.png') }}" width="200px"/>
+                    <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">额度评估</button></p>
+                </a>
+            </div>
         </div>
     </div>
     </div>
 <!--begin footer-->
-<div class="footer-wrap">
-  <div class="footer cbody clearfix">
-       <p style="margin-left: 30%;font-size: 15px;">
-           <span class="glyphicon glyphicon-earphone">
-           </span> copyright © 联金所爬虫组  0877-88888888 (周一至周五)
-       </p>
-
-  </div>
-</div>
+ <div style="background-color:#eee; border-top:1px solid #ccc;">
+        <div style="text-align: center;margin-top: 40px">
+                <h5>
+                    <a target="_blank" href="#" class="fui-github" style="margin-left: 10px;margin-right: 10px"></a>
+                    <a target="_blank" href="#" class="fui-html5" style="margin-left: 10px;margin-right: 10px"></a>
+                    <a target="_blank" href="#" class="fui-instagram" style="margin-left: 10px;margin-right: 10px"></a>
+                    <a target="_blank" href="#" class="fui-tumblr" style="margin-left: 10px;margin-right: 10px"></a>
+                </h5>
+                <p style="font-size: 16px;text-align: center">Powered by <a href="#">联金所爬虫组</a>. Copyright &copy; 2016 </p>
+                <p><a href="#" target="_blank" style="font-size: 16px"> Spider Official Website</a>. All rights reserved.</p>
+                <a style="font-size: 16px" target="_blank" href="#"><i style="font-size:64px; color: #444;"></i></a>
+        </div>
+ </div>
 {% endblock %}
