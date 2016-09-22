@@ -1,0 +1,26 @@
+Author: moyh
+Date: 2016/9/7
+
+alter1:
+    shixin_spider 查询接口去掉了协程，改为流程
+
+alter2：
+    shixin_spider 遍历id爬虫整合到一块
+    shixin_spider 分组用yield改进，同一用连续的id
+
+alter3:
+    zhixing_spider 遍历id爬虫
+
+alter4:
+    每个爬虫类添加被封标志(作为单独属性)
+
+思考想改进的地方：
+1 log的id过多，列举的显示臃肿
+
+
+遇到的bug:
+1 请求被block下，读库-请求-写库，一不小心就成了死循环
+
+
+调优：
+默认统一将重发次数调正为1，即遇到超时发两次
