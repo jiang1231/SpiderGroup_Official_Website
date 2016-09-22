@@ -13,7 +13,7 @@ from math import ceil
 from lxml import etree
 from requests.utils import dict_from_cookiejar
 
-import public.db_config as DB
+# import public.db_config as DB
 import configuration.columns as config
 from public.share_func import userAgent, \
     basicRequest, getIp, recogImage, makeDirs, clawLog
@@ -251,10 +251,10 @@ class ShiXinSpider(object):
         valid_num  = len(self.valid_items)
         invalid_num = len(self.invalid_items)
 
-        if valid_num:
-            DB.insertDictList(config.TABEL_NAME_1, config.COLUMN_VALID, self.valid_items)
-        if invalid_num:
-            DB.insertDictList(config.TABLE_NAME_2, config.COLUMN_INVALID, self.invalid_items)
+        # if valid_num:
+        #     DB.insertDictList(config.TABEL_NAME_1, config.COLUMN_VALID, self.valid_items)
+        # if invalid_num:
+        #     DB.insertDictList(config.TABLE_NAME_2, config.COLUMN_INVALID, self.invalid_items)
 
         return u'完成入库：有效信息{0}，错误信息{1}'.format(valid_num, invalid_num)
     # end

@@ -21,18 +21,31 @@
     <script>
     $(document).ready(function() {
         $("#content").change(function () {
+            $("#searchButton").attr('disabled', true);
             $.get('/check_phone_number/'+$("#content").val(), function (data, status) {
-                if (data === 'union') {
+                data = JSON.parse(data);
+                $("#searchButton").attr('disabled', false);
+{#                alert(typeof data.company);#}
+                if (data.company === 1) {
                     $("#vcode-label").empty();
                     $("#vcode-father").remove();
                     $("#checkNumber").empty();
-                    $("#checkNumber").append('<p style="text-align: center;margin-top: 20px;">欢迎您，联通用户'+$("#content").val()+'！！</p>');
+                    $("#checkNumber").append('<p style="text-align: center;margin-top: 20px;">' +
+                            '欢迎您，'+data.province+ data.city+'联通用户'+$("#content").val()+'！！</p>');
                 }
-                else if (data === 'mobile') {
+                else if (data.company === 2) {
+                    $("#vcode-label").empty();
+                    $("#vcode-father").remove();
                     $("#vcode-label").append('验证码:');
                     $("#vcode-div").append('<div class="col-sm-8" id="vcode-father"><input type="password"id="vcode" name="vcode" class="form-control"/></div>');
                     $("#checkNumber").empty();
                     $("#checkNumber").append('<p style="text-align: center;margin-top: 20px;">欢迎您，移动用户'+$("#content").val()+'！！</p>');
+                }
+                else if (data.company === 3) {
+                  $("#vcode-label").empty();
+                    $("#vcode-father").remove();
+                    $("#checkNumber").empty();
+                    $("#checkNumber").append('<p style="text-align: center;margin-top: 20px;">欢迎您，联通用户'+$("#content").val()+'！！</p>');
                 }
                 else {
                     $("#checkNumber").empty();
@@ -41,8 +54,8 @@
             })
         })
         $("#password").change(function () {
-            $("#vcode-label").empty();
-            $("#vcode-father").remove();
+{#            $("#vcode-label").empty();#}
+{#            $("#vcode-father").remove();#}
         })
         $("#searchButton").click(function () {
             if($("#content").val()&&$("#password").val()){
@@ -117,7 +130,7 @@
     </div>
 
     <div class="row">
-        <div id="result" >
+        <div id="result" class="col-md-10 col-lg-offset-1">
         </div>
     </div>
     </div>

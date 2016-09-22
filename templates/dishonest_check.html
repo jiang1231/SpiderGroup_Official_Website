@@ -43,7 +43,7 @@
         border-radius: 12px;
     }
     div.my-input {
-        background-color: #f1f3f5;
+        background-color: #dadcde;
         padding-top: 30px;
         border-radius: 0px 0px 10px 10px;
     }
@@ -62,7 +62,7 @@
                         <input type="text" class=" form-control" id="name" name="name">
                     </div>
                     <div class="col-sm-1">
-                        <span style="color: red">*</span>
+                        <span style="color: red;text-align: left">*</span>
                     </div>
 
                 </div>
@@ -73,19 +73,30 @@
                     </div>
                 </div>
                 <div class="radio" style="display: inline-block">
-                    <div class="col-sm-offset-5 col-sm-8">
-                    <label>
-                    <input type="radio" name="flag" id="company_flag" value="1" checked>
-                    企业号码
-                    </label></div>
+                    <div class="col-sm-offset-4 col-sm-8">
+                        <label class="radio">
+                        <input type="radio" name="flag" id="company_flag" value="option1" data-toggle="radio" checked>
+                            企业号码
+                        </label></div>
                 </div>
                 <div class="radio" style="display: inline-block">
                     <div class="col-sm-offset-4 col-sm-8">
-                    <label>
-                    <input type="radio" name="flag" id="person_flag" value="2">
-                    个人号码
-                    </label></div>
+                        <label class="radio">
+                        <input type="radio" name="flag" id="person_flag" value="option2" data-toggle="radio">
+                            个人号码
+                        </label>
+                    </div>
                 </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-8">
+                         <label class="checkbox" for="history">
+                            <input type="checkbox" value="" id="history" name="history" data-toggle="checkbox">
+                                历史记录
+                        </label>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-9" style="margin-bottom: 30px">
                         <a role="button" class="btn btn-primary btn-block" id="checkButton"> 查询 </a>

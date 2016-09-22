@@ -111,13 +111,29 @@
         })
     })
     </script>
+    <style>
+          .my-form {
+        -moz-box-shadow: 5px 5px 5px #888888; /* 老的 Firefox */
+{#        box-shadow: 4px 4px 4px #888888;#}
+        top: 80px;
+        background-color: #34495e;
+        border-radius: 12px;
+    }
+    div.my-input {
+        background-color: #dadcde;
+        padding-top: 30px;
+        padding-left: 10px;
+        border-radius: 0px 0px 10px 10px;
+    }
+    </style>
 {% endblock %}
 {% block page_content %}
     <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <p> <strong><span style="font-size: 30px;color: #1abc9c">政</span>府机构查询 </strong></p>
-            <form id="searchForm">
+            <form id="searchForm" class="my-form">
+                <p style="padding: 10px 0px 10px 20px;color: #f1f3f5"> <strong><span style="font-size: 30px;color: #1abc9c">政</span>府机构查询 </strong></p>
+                <div class="my-input">
                 <select id="dopProvince" data-toggle="select" class="form-control select select-inverse mrs mbm" name="province">
                     <option value=''>省份</option>
                 </select>
@@ -130,15 +146,16 @@
                 <select id="dopStreet" data-toggle="select" class="form-control select select-inverse mrs mbm" name="town_street">
                     <option value=''>街道</option>
                 </select>
-                <input style="display: inline-block;position: relative;width: 140px" type="text" id='content' name="content"/>
+                <input style="display: inline-block;position: relative;width: 140px" class="form-control" type="text" id='content' name="content"/>
                 <a role="button" class="btn btn-primary" > 查询 </a>
+                </div>
             </form>
 
         </div>
     </div>
 
     <div class="row" style="margin-top: 50px">
-        <div id="result" style="width: 93%;margin-left: 20px">
+        <div id="result" style="padding-left: 20px;padding-right: 20px;">
         </div>
     </div>
     </div>

@@ -1,128 +1,112 @@
-<p style="margin: 30px;">姓名： {{ user.name }}  地址：{{ user.address }}
-性别： {{ user.sex }}</p>
-<table class="table table-hover" id="table1">
+{#人的信息#}
+<div style="border-top: solid 2px #e5e9ea;">
+    <div>
+        {% if user['sex']== '男' %}
+        <img src="{{ url_for('static', filename='img/male.png') }}" height="100%" width="150px" style="float: left;margin-right: 50px"/>
+        {% else %}
+        <img src="{{ url_for('static', filename='img/female.png') }}" height="100%" width="150px" style="float: left;margin-right: 50px;"/>
+        {% endif %}
+
+    </div>
+    <p style="margin: 30px;">
+        <span style="font-weight: bold">姓名：</span> <span style="margin-right: 20px;">{{ user['name'] }} </span>
+        <span style="font-weight: bold"> 归属地：</span><span style="margin-right: 20px;">{{ user['province'] }}省{{ user['city'] }}市 </span>
+{#        <span style="font-weight: bold">性别：</span> <span style="margin-right: 20px;">{{ user['sex'] }}  </span>#}
+        <span style="font-weight: bold">手机号：</span><span style="margin-right: 20px;">{{ user['phone'] }}</span>
+    </p>
+    <p style="margin: 30px;">
+        <span style="font-weight: bold">地址：</span>
+        <span style="margin-right: 20px;">{{ user['address'] }}</span>
+    </p>
+</div>
+
+<div style="margin-top: 40px">
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active" id="calls"><a><span class="fui-time"> 通话详情</span></a></li>
+        <li role="presentation" id="notes"><a>短信记录</a></li>
+    </ul>
+</div>
+{#通话#}
+<div>
+<table class="table table-hover" id="calls-table">
     <thread>
         <tr>
-            <th >起始时间</th>
-            <th >通话地点</th>
-            <th >呼叫类型</th>
-            <th >对方号码</th>
-            <th >通话时长</th>
-            <th >业务类型</th>
-            <th >通话类型</th>
+{#            时间（年月日） 呼叫类型（本地通话1,省内通话2,其他3） 通话金额  时间（时分秒） 通话时长 对方号码#}
+            <th>时间</th>
+            <th>呼叫类型</th>
+            <th>通话时长</th>
+            <th>通话金额</th>
+            <th>对方号码</th>
           </tr>
     </thread>
- <tbody id="table2">
+ <tbody id="calls-body">
+ {% for call in operator_call %}
+{#     {'call_date': u'2016-09-16', 'land_type': 2, 'call_cost': u'1.45', 'call_time': u'21:43:19', 'call_long': u'4\u520655\u79d2', 'phone': '13267175437', 'other_phone': u'15016631215', 'call_area': u'\u6df1\u5733', 'call_type': 1, 'cert_num': u'4409****3451'},#}
    <tr>
-     <td bgcolor="#FFFFFF">1</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-       <td bgcolor="#FFFFFF">&nbsp;</td>
-       <td bgcolor="#FFFFFF">&nbsp;</td>
-
+     <td bgcolor="#FFFFFF">{{ call['call_date'] }} {{ call['call_time'] }}</td>
+     <td bgcolor="#FFFFFF">{% if call['land_type'] == 1 %} 本地通话 {% elif call['land_type'] == 2 %} 省内通话 {% else %}其他{% endif %}</td>
+     <td bgcolor="#FFFFFF">{{ call['call_long'] }}</td>
+     <td bgcolor="#FFFFFF">{{ call['call_cost'] }}</td>
+     <td bgcolor="#FFFFFF">{{ call['other_phone'] }}</td>
    </tr>
-   <tr>
-     <td bgcolor="#FFFFFF">2</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>       <td bgcolor="#FFFFFF">&nbsp;</td>
-       <td bgcolor="#FFFFFF">&nbsp;</td>
-   </tr>
-   <tr>
-     <td bgcolor="#FFFFFF">3</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>       <td bgcolor="#FFFFFF">&nbsp;</td>
-       <td bgcolor="#FFFFFF">&nbsp;</td>
-   </tr>
-   <tr>
-     <td bgcolor="#FFFFFF">4</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>       <td bgcolor="#FFFFFF">&nbsp;</td>
-       <td bgcolor="#FFFFFF">&nbsp;</td>
-   </tr>
-   <tr>
-     <td bgcolor="#FFFFFF">5</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>       <td bgcolor="#FFFFFF">&nbsp;</td>
-       <td bgcolor="#FFFFFF">&nbsp;</td>
-   </tr>
-   <tr>
-     <td bgcolor="#FFFFFF">6</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>       <td bgcolor="#FFFFFF">&nbsp;</td>
-       <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-   </tr>
-   <tr>
-     <td bgcolor="#FFFFFF">7</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>       <td bgcolor="#FFFFFF">&nbsp;</td>
-       <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-   </tr>
-   <tr>
-     <td bgcolor="#FFFFFF">8</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>       <td bgcolor="#FFFFFF">&nbsp;</td>
-       <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-   </tr>
-   <tr>
-     <td bgcolor="#FFFFFF">9</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>       <td bgcolor="#FFFFFF">&nbsp;</td>
-       <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-   </tr>
-   <tr>
-     <td bgcolor="#FFFFFF">10</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>       <td bgcolor="#FFFFFF">&nbsp;</td>
-       <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-   </tr>
-   <tr>
-     <td bgcolor="#FFFFFF">11</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>       <td bgcolor="#FFFFFF">&nbsp;</td>
-       <td bgcolor="#FFFFFF">&nbsp;</td>
-     <td bgcolor="#FFFFFF">&nbsp;</td>
-   </tr>
+ {% endfor %}
    </tbody>
  </table>
-<div class="col-md-6 col-md-offset-3">
- <span id="spanFirst">第一页</span> <span id="spanPre">上一页</span> <span id="spanNext">下一页</span>
-    <span id="spanLast">最后一页</span> 第<span id="spanPageNum" style="color: #16a085;"></span>页/共<span id="spanTotalPage" style="color: #16a085;"></span>页
-    </div>
+</div>
+
+{#短讯#}
+<div>
+<table class="table table-hover" id="notes-table">
+    <thread>
+        <tr>
+{##时间 手机号码 短信费用 业务类型对方号码#}
+            <th>时间</th>
+            <th>手机号码</th>
+            <th>业务类型</th>
+            <th>短信费用</th>
+            <th>对方号码</th>
+          </tr>
+    </thread>
+ <tbody id="notes-body">
+ {% for note in operator_note %}
+{#     {'call_date': u'2016-09-16', 'land_type': 2, 'call_cost': u'1.45', 'call_time': u'21:43:19', 'call_long': u'4\u520655\u79d2', 'phone': '13267175437', 'other_phone': u'15016631215', 'call_area': u'\u6df1\u5733', 'call_type': 1, 'cert_num': u'4409****3451'},#}
+   <tr>
+       <td bgcolor="#FFFFFF">{{ note['note_date'] }} {{ note['note_time'] }}</td>
+       <td bgcolor="#FFFFFF">{{ note['phone'] }}</td>
+       <td bgcolor="#FFFFFF">{{ note['business_type'] }} </td>
+       <td bgcolor="#FFFFFF">{{ note['note_cost'] }}</td>
+       <td bgcolor="#FFFFFF">{{ note['other_phone'] }}</td>
+   </tr>
+ {% endfor %}
+   </tbody>
+ </table>
+</div>
+
+
+<div class="col-md-6 col-md-offset-3" id="calls-page">
+ <span id="spanFirst1">第一页</span> <span id="spanPre1">上一页</span> <span id="spanNext1">下一页</span>
+    <span id="spanLast1">最后一页</span> 第<span id="spanPageNum1" style="color: #16a085;"></span>页/共<span id="spanTotalPage1" style="color: #16a085;"></span>页
+</div>
+
+<div class="col-md-6 col-md-offset-3" id="notes-page">
+ <span id="spanFirst2">第一页</span> <span id="spanPre2">上一页</span> <span id="spanNext2">下一页</span>
+    <span id="spanLast2">最后一页</span> 第<span id="spanPageNum2" style="color: #16a085;"></span>页/共<span id="spanTotalPage2" style="color: #16a085;"></span>页
+</div>
+
  <script>
-     var theTable = document.getElementById("table2");
-     var totalPage = document.getElementById("spanTotalPage");
-     var pageNum = document.getElementById("spanPageNum");
+     var theTable = document.getElementById("calls-body");
+     var totalPage = document.getElementById("spanTotalPage1");
+     var pageNum = document.getElementById("spanPageNum1");
 
 
-     var spanPre = document.getElementById("spanPre");
-     var spanNext = document.getElementById("spanNext");
-     var spanFirst = document.getElementById("spanFirst");
-     var spanLast = document.getElementById("spanLast");
+     var spanPre = document.getElementById("spanPre1");
+     var spanNext = document.getElementById("spanNext1");
+     var spanFirst = document.getElementById("spanFirst1");
+     var spanLast = document.getElementById("spanLast1");
 
 
      var numberRowsInTable = theTable.rows.length;
-     var pageSize = 8;
+     var pageSize = 20;
      var page = 1;
 
 
@@ -263,4 +247,181 @@
 
 
      hide();
+</script>
+<script>
+     var theTable = document.getElementById("notes-body");
+     var totalPage = document.getElementById("spanTotalPage2");
+     var pageNum = document.getElementById("spanPageNum2");
+
+
+     var spanPre = document.getElementById("spanPre2");
+     var spanNext = document.getElementById("spanNext2");
+     var spanFirst = document.getElementById("spanFirst2");
+     var spanLast = document.getElementById("spanLast2");
+
+
+     var numberRowsInTable = theTable.rows.length;
+     var pageSize = 20;
+     var page = 1;
+
+
+     //下一页
+     function next() {
+
+
+         hideTable();
+
+
+         currentRow = pageSize * page;
+         maxRow = currentRow + pageSize;
+         if (maxRow > numberRowsInTable) maxRow = numberRowsInTable;
+         for (var i = currentRow; i < maxRow; i++) {
+             theTable.rows[i].style.display = '';
+         }
+         page++;
+
+
+         if (maxRow == numberRowsInTable) { nextText(); lastText(); }
+         showPage();
+         preLink();
+         firstLink();
+     }
+
+
+     //上一页
+     function pre() {
+
+
+         hideTable();
+
+
+         page--;
+
+
+         currentRow = pageSize * page;
+         maxRow = currentRow - pageSize;
+         if (currentRow > numberRowsInTable) currentRow = numberRowsInTable;
+         for (var i = maxRow; i < currentRow; i++) {
+             theTable.rows[i].style.display = '';
+         }
+
+
+
+
+         if (maxRow == 0) { preText(); firstText(); }
+         showPage();
+         nextLink();
+         lastLink();
+     }
+
+
+     //第一页
+     function first() {
+         hideTable();
+         page = 1;
+         for (var i = 0; i < pageSize; i++) {
+             theTable.rows[i].style.display = '';
+         }
+         showPage();
+
+
+         preText();
+         nextLink();
+         lastLink();
+     }
+
+
+     //最后一页
+     function last() {
+         hideTable();
+         page = pageCount();
+         currentRow = pageSize * (page - 1);
+         for (var i = currentRow; i < numberRowsInTable; i++) {
+             theTable.rows[i].style.display = '';
+         }
+         showPage();
+
+
+         preLink();
+         nextText();
+         firstLink();
+     }
+
+
+     function hideTable() {
+         for (var i = 0; i < numberRowsInTable; i++) {
+             theTable.rows[i].style.display = 'none';
+         }
+     }
+
+
+     function showPage() {
+         pageNum.innerHTML = page;
+     }
+
+
+     //总共页数
+     function pageCount() {
+         var count = 0;
+         if (numberRowsInTable % pageSize != 0) count = 1;
+         return parseInt(numberRowsInTable / pageSize) + count;
+     }
+
+
+     //显示链接
+     function preLink() { spanPre.innerHTML = "<a href='javascript:pre();'>上一页</a>"; }
+     function preText() { spanPre.innerHTML = "上一页"; }
+
+
+     function nextLink() { spanNext.innerHTML = "<a href='javascript:next();'>下一页</a>"; }
+     function nextText() { spanNext.innerHTML = "下一页"; }
+
+
+     function firstLink() { spanFirst.innerHTML = "<a href='javascript:first();'>第一页</a>"; }
+     function firstText() { spanFirst.innerHTML = "第一页"; }
+
+
+     function lastLink() { spanLast.innerHTML = "<a href='javascript:last();'>最后一页</a>"; }
+     function lastText() { spanLast.innerHTML = "最后一页"; }
+
+
+     //隐藏表格
+     function hide() {
+         for (var i = pageSize; i < numberRowsInTable; i++) {
+             theTable.rows[i].style.display = 'none';
+         }
+
+
+         totalPage.innerHTML = pageCount();
+         pageNum.innerHTML = '1';
+
+
+         nextLink();
+         lastLink();
+     }
+
+
+     hide();
+</script>
+
+<script>
+    $("#notes-table").hide();
+    $("#notes-page").hide();
+        $("#calls").click(function(){
+            $(this).attr("class", "active");
+            $("#notes").attr("class", " ");
+            $("#notes-table").hide();
+            $("#notes-page").hide();
+            $("#calls-page").show();
+            $("#calls-table").show();
+    });
+        $("#notes").click(function(){
+            $(this).attr("class", "active");
+            $("#calls").attr("class", " ");
+            $("#calls-table").hide();
+            $("#calls-page").hide();
+            $("#notes-page").show();
+            $("#notes-table").show();
+
+    });
 </script>

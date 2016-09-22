@@ -8,12 +8,11 @@ from math import ceil
 sys.path.append('../')
 
 from lxml import etree
-import public.db_config as DB
+# import public.db_config as DB
 import configuration.columns as config
 from requests.utils import dict_from_cookiejar
 from public.share_func import basicRequest, \
     userAgent, getIp, recogImage, clawLog, makeDirs
-
 
 _timeout = 5
 
@@ -257,10 +256,10 @@ class ZhiXingSpider(object):
         valid_num  = len(self.valid_items)
         invalid_num = len(self.invalid_items)
 
-        if valid_num:
-            DB.insertDictList(config.TABEL_NAME_1, config.COLUMN_VALID, self.valid_items)
-        if invalid_num:
-            DB.insertDictList(config.TABLE_NAME_2, config.COLUMN_INVALID, self.invalid_items)
+        # if valid_num:
+        #     DB.insertDictList(config.TABEL_NAME_1, config.COLUMN_VALID, self.valid_items)
+        # if invalid_num:
+        #     DB.insertDictList(config.TABLE_NAME_2, config.COLUMN_INVALID, self.invalid_items)
 
         return u'完成入库：有效信息{0}，错误信息{1}'.format(valid_num, invalid_num)
     # end saveItems
@@ -273,6 +272,7 @@ def zhixingSearchAPI(name='', card_num=''):
     :param card_num:身份证号/企业号
     :return: dict(t_zhixing_valid=[], t_zhixing_invalid=[])
     """
+    # return {'t_zhixing_valid': [{'card_num': u'44282119470****7212', 'name': u'\u4f55\u8ba1\u901a', 'reg_date': u'2009\u5e7407\u670808\u65e5', 'court_name': u'\u8087\u5e86\u5e02\u9f0e\u6e56\u533a\u4eba\u6c11\u6cd5\u9662', 'execute_money': 58337.96, 'sys_id': 14580258, 'case_code': u'(2009)\u9f0e\u6267\u5b57\u7b2c00201\u53f7'}], 't_zhixing_invalid': []}
     makeDirs()
     if not name and not name:
         raise ValueError
