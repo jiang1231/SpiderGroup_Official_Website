@@ -4,7 +4,7 @@
 {% endblock %}
 {% block head %}
 {{ super() }}
-    <style xmlns="http://www.w3.org/1999/html">
+    <style>
     .footer-wrap {
         border-top: 1px solid #c7d4e0;
         width: 100%;
@@ -41,16 +41,30 @@
     position: relative;
     }
     .word {
-    position: absolute;
-    width: 90px;
+        color: #617385;
+    position: absolute;font-weight: 200;
+    width: 140px;
     text-align: center;
     background: #ffffff;
-    margin-left: 50%;
-    left: -45px;
-    top: -18px;
-    font-size: 20px;
+    margin-left: 49%;
+    left: -65px;
+    top: -22px;
+    font-size: 30px;
     font-family: "微软雅黑";
 }
+    	img {
+	    transition:All 0.4s ease-in-out;
+	    -webkit-transition:All 0.4s ease-in-out;
+	    -moz-transition:All 0.4s ease-in-out;
+	    -o-transition:All 0.4s ease-in-out;
+	}
+	img:hover {
+        transform:rotate(360deg) scale(1.15);
+	    -webkit-transform:rotate(360deg) scale(1.15);
+	    -moz-transform:rotate(360deg) scale(1.15);
+	    -o-transform:rotate(360deg) scale(1.15);
+	    -ms-transform:rotate(360deg) scale(1.15);
+	}
     </style>
 {% endblock %}
 {% block page_content %}
@@ -66,8 +80,8 @@
         <div class="col-md-4">
             <div style="margin-left: 22%">
                 <a href="{{ url_for('dishonest_check') }}">
-                    <img src="{{ url_for('static', filename='img/remain2.jpg') }}" width="200px"
-                         onmouseover="bigImg(this)" onmouseout="normalImg(this)"/>
+                    <img  src="{{ url_for('static', filename='img/remain2.png') }}" width="200px"
+                         />
                     <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 40px">失信被执行人</button></p>
                 </a>
             </div>
@@ -75,7 +89,7 @@
         <div class="col-md-4">
             <div style="margin-left: 22%">
                 <a href="{{ url_for('dishonest_person') }}">
-                    <img src="{{ url_for('static', filename='img/remain1.jpg') }}" width="200px"
+                    <img src="{{ url_for('static', filename='img/remain1.png') }}" width="200px"
                          onmouseover="bigImg(this)" onmouseout="normalImg(this)"/>
                     <p><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">被执行人</button></p>
                 </a>
@@ -100,8 +114,7 @@
          <div class="col-md-4">
              <div style="margin-left: 22%">
                  <a href="{{ url_for('check') }}">
-                    <img src="{{ url_for('static', filename='img/search.jpg') }}" width="200px"
-                         onmouseover="bigImg(this)" onmouseout="normalImg(this)"/>
+                    <img src="{{ url_for('static', filename='img/search.png') }}" width="200px"/>
                     <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 65px">运营商</button></p>
                 </a>
              </div>
@@ -109,8 +122,7 @@
         <div class="col-md-4">
             <div style="margin-left: 22%">
                 <a href="{{ url_for('institution') }}">
-                <img src="{{ url_for('static', filename='img/government.jpg') }}" width="200px"
-                 onmouseover="bigImg(this)" onmouseout="normalImg(this)"/>
+                <img src="{{ url_for('static', filename='img/government.png') }}" width="200px"/>
                     <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">政府机构</button></p>
                 </a>
             </div>
@@ -127,8 +139,8 @@
     </div>
     </div>
 <!--begin footer-->
- <div style="background-color:#eee; border-top:1px solid #ccc;">
-        <div style="text-align: center;margin-top: 40px">
+ <div style="background-color:#333; border-top:1px solid #ccc;">
+        <div style="text-align: center;color:white;margin-top: 40px">
                 <h5>
                     <a target="_blank" href="#" class="fui-github" style="margin-left: 10px;margin-right: 10px"></a>
                     <a target="_blank" href="#" class="fui-html5" style="margin-left: 10px;margin-right: 10px"></a>
@@ -140,16 +152,5 @@
                 <a style="font-size: 16px" target="_blank" href="#"><i style="font-size:64px; color: #444;"></i></a>
         </div>
  </div>
-<script>
-    function normalImg(x)
-    {
-{#        x.style.height="128px";#}
-        x.style.padding= "0px";
-    }
-    function bigImg(x)
-    {
-{#        x.style.height="128px";#}
-        x.style.padding= "20px";
-    }
-</script>
+
 {% endblock %}

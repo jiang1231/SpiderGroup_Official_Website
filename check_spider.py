@@ -9,10 +9,12 @@ from zhixing_spider.zhixing_search import zhixingSearchAPI
 from shixin_spider.shixin_search import shixinSearchAPI
 from operator_result_temp import result
 from phone_attr import getAttributes
+from flask.ext.script import Manager
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root@localhost:3306/spider'
 db.init_app(app)
+manager = Manager(app)
 
 # moment = Moment(app)
 
@@ -165,4 +167,4 @@ def dishonest_person():
     return render_template('dishonest_person.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    manager.run()
