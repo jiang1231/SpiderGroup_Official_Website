@@ -21,6 +21,17 @@
     <script>
     $(document).ready(function() {
         $("#content").change(function () {
+            try {
+                var x = $("#content").val();
+                if(x == "") throw "请输入手机号";
+                if(isNaN(x)) throw "输入错误，请输入数字";
+                if(x.length != 11) throw "手机号位数有误,请重新输入";
+            }
+            catch (err) {
+                 $("#content").attr('style', 'border-style: solid;border-color:red;');
+                 $("#checkNumber").append('<p style="text-align: center;margin-top: 20px;">'+err+'</p>');
+                 return;
+            }
             $("#searchButton").attr('disabled', true);
             $.get('/check_phone_number/'+$("#content").val(), function (data, status) {
                 data = JSON.parse(data);

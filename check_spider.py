@@ -13,6 +13,7 @@ from flask.ext.script import Manager
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root@localhost:3306/spider'
+app.config['DEBUG'] = True
 db.init_app(app)
 manager = Manager(app)
 
@@ -129,7 +130,7 @@ def dishonest_check():
         else:
             d = shixinSearchAPI(company_name, card_num)
             print d
-            if d['t_shixin_valid']:
+            if d and d['t_shixin_valid']:
                 d = d['t_shixin_valid']
                 return render_template('dishonest_executor_output.html', DishonestExecutors=d)
             else:

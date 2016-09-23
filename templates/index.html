@@ -41,7 +41,7 @@
     position: relative;
     }
     .word {
-        color: #617385;
+    color: #617385;
     position: absolute;font-weight: 200;
     width: 140px;
     text-align: center;
@@ -49,7 +49,7 @@
     margin-left: 49%;
     left: -65px;
     top: -22px;
-    font-size: 30px;
+    font-size: 23px;
     font-family: "微软雅黑";
 }
     	img {
@@ -65,6 +65,53 @@
 	    -o-transform:rotate(360deg) scale(1.15);
 	    -ms-transform:rotate(360deg) scale(1.15);
 	}
+    div h4 {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+    }
+    div p {
+        font-size: 15px;
+        font-style: italic;
+        text-align: center;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    #contacted .name, .email{
+        height: 50px;
+        padding-left: 30px;
+        font-weight: 300;
+        font-family: Roboto,sans-serif;
+        font-size: 17px;
+        border-radius: 50px;
+}
+    #contacted .comment {
+        height: 100px;
+        border-radius: 20px;
+        padding-left: 30px;
+        font-weight: 300;
+        font-family: Roboto,sans-serif;
+        font-size: 17px;
+    }
+    .contact h3 {
+        text-align: center;
+    }
+    #contacted .button {
+        height: 50px;
+        padding-left: 25px;
+        font-weight: 600;
+        font-size: 14px;
+        font-family: Montserrat,sans-serif;
+        border: none;
+        color: #fff;
+        float: right;
+        margin-top: 15px;
+        border-radius: 50px;
+        padding-right: 25px;
+        letter-spacing: 1px;
+        background-color: #e71e62;
+        text-transform: uppercase;
+}
     </style>
 {% endblock %}
 {% block page_content %}
@@ -78,31 +125,29 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div style="margin-left: 22%">
                 <a href="{{ url_for('dishonest_check') }}">
-                    <img  src="{{ url_for('static', filename='img/remain2.png') }}" width="200px"
+                    <img  src="{{ url_for('static', filename='img/remain2.png') }}" width="200px" style="margin-left: 22%"
                          />
-                    <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 40px">失信被执行人</button></p>
+                    <h4 style="margin: -15px 0px 10px 0px">失信被执行人</h4>
+                    <p> "黑名单"查询入口。名单涵盖了社会各行各业的“老赖”。
+                    </p>
                 </a>
-            </div>
         </div>
         <div class="col-md-4">
-            <div style="margin-left: 22%">
                 <a href="{{ url_for('dishonest_person') }}">
-                    <img src="{{ url_for('static', filename='img/remain1.png') }}" width="200px"
+                    <img src="{{ url_for('static', filename='img/remain1.png') }}" width="200px" style="margin-left: 22%"
                          onmouseover="bigImg(this)" onmouseout="normalImg(this)"/>
-                    <p><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">被执行人</button></p>
+                                        <h4 style="margin: -15px 0px 10px 0px">被执行人</h4>
+                    <p> 被执行人查询入口。被执行人是指在法定的上诉期满后，或终身判决作出后，拒不履行法院判决或仲裁裁决的当事人。
                 </a>
-            </div>
         </div>
         <div class="col-md-4">
-            <div style="margin-left: 22%">
                 <a href="#">
-                    <img src="{{ url_for('static', filename='img/credit_report.png') }}" width="200px"
+                    <img src="{{ url_for('static', filename='img/credit_report.png') }}" width="200px" style="margin-left: 22%"
                          onmouseover="bigImg(this)" onmouseout="normalImg(this)"/>
-                    <p><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">征信报告</button></p>
+                    <h4 style="margin: -15px 0px 10px 0px">征信报告</h4>
+                    <p> 征信报告查询入口。征信报告分为个人信用报告以及企业信用报告。</p>
                 </a>
-            </div>
         </div>
     </div>
     <div class="row" style="margin-top: 50px">
@@ -112,34 +157,70 @@
             </div>
         </div>
          <div class="col-md-4">
-             <div style="margin-left: 22%">
                  <a href="{{ url_for('check') }}">
-                    <img src="{{ url_for('static', filename='img/search.png') }}" width="200px"/>
-                    <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 65px">运营商</button></p>
+                    <img src="{{ url_for('static', filename='img/search.png') }}" width="200px" style="margin-left: 22%"/>
+                     <h4 style="margin: -15px 0px 10px 0px">运营商</h4>
+                    <p> 运营商查询入口。查询用户手机号码详细信息。</p>
                 </a>
-             </div>
         </div>
         <div class="col-md-4">
-            <div style="margin-left: 22%">
                 <a href="{{ url_for('institution') }}">
-                <img src="{{ url_for('static', filename='img/government.png') }}" width="200px"/>
-                    <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">政府机构</button></p>
+                <img src="{{ url_for('static', filename='img/government.png') }}" width="200px"
+                     style="margin-left: 22%"/>
+                    <h4 style="margin: -15px 0px 10px 0px">政府机构</h4>
+                    <p> 运营商查询入口。查询用户手机号码详细信息。</p>
                 </a>
-            </div>
         </div>
         <div class="col-md-4">
-            <div style="margin-left: 22%">
                 <a href="#">
                     <img src="{{ url_for('static', filename='img/money_judge_gray.png') }}" width="200px"
-                    />
-                    <p ><button class="btn btn-primary" style="margin: -15px 0px 10px 55px">额度评估</button></p>
+                         style="margin-left: 22%"/>
+                    <h4 style="margin: -15px 0px 10px 0px">额度评估</h4>
+                    <p> 待上线。</p>
                 </a>
-            </div>
         </div>
     </div>
     </div>
 <!--begin footer-->
- <div style="background-color:#333; border-top:1px solid #ccc;">
+ <div style="background-color:#3c4252; border-top:1px solid #ccc;">
+
+ </div>
+<footer style="background-color:#3c4252">
+    <div class="container logo site-bottom">
+        <section class="contact">
+            <h3>联系我们</h3>
+            <p>Got a question or would like to schedule a one-on-one demo? Please use our contact form below and we’ll get back to you right away.</p>
+            <div class="col-sm-11 col-sm-offset-1" style="padding-bottom: 50px;padding-top: 50px;">
+                <div id="contacted">
+                    <input type="hidden" name="env" value="live" />
+                    <div>
+                        <div role="form" lang="en-US" dir="ltr">
+                            <div class="screen-reader-response"></div>
+                            <form action="#" method="post" class="wpcf7-form" novalidate="novalidate">
+                                <div class="col-sm-9 col-sm-offset-1">
+                                    <div style="min-height: 75px;">
+                                        <div class="col-sm-5">
+                                            <input type="text" name="name" value="" size="40" class="name form-control" aria-invalid="false" placeholder="Name" />
+                                        </div>
+                                        <div class="col-sm-6 col-sm-offset-1">
+                                            <input type="email" name="email" value="" size="40" class="email form-control" aria-required="true" aria-invalid="false" placeholder="Email" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-9 col-sm-offset-1">
+                                    <div style="min-height: 75px;">
+                                        <textarea name="comment" cols="40" rows="3" class="comment form-control" aria-invalid="false" placeholder="Message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-9 col-sm-offset-1" style="margin-top: 10px;">
+                                    <input type="submit" value="Send!" class="button btn btn-default" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <div style="text-align: center;color:white;margin-top: 40px">
                 <h5>
                     <a target="_blank" href="#" class="fui-github" style="margin-left: 10px;margin-right: 10px"></a>
@@ -151,6 +232,6 @@
                 <p><a href="#" target="_blank" style="font-size: 16px"> Spider Official Website</a>. All rights reserved.</p>
                 <a style="font-size: 16px" target="_blank" href="#"><i style="font-size:64px; color: #444;"></i></a>
         </div>
- </div>
-
+  </div>
+</footer>
 {% endblock %}
