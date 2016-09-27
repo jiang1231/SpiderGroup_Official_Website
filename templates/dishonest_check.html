@@ -52,44 +52,41 @@
 {% block page_content %}
     <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-8 col-md-offset-2">
             <form id="searchForm" class="my-form form-horizontal" >
                 <p style="padding: 10px 0px 10px 20px;color: #f1f3f5"> <strong><span style="font-size: 30px;color: #1abc9c">失</span>信被执行人 </strong></p>
                 <div class="my-input">
                 <div class="form-group">
-                    <label for="name" class="col-sm-2 control-label">名称</label>
-                    <div class="col-sm-9">
+                    <label for="name" class="col-sm-4 control-label">被执行人姓名/名称</label>
+                    <div class="col-sm-6">
                         <input type="text" class=" form-control" id="name" name="name">
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                         <span style="color: red;text-align: left">*</span>
                     </div>
 
                 </div>
                 <div class="form-group">
-                    <label for="card_num" class="col-sm-2 control-label">卡号</label>
-                    <div class="col-sm-9">
+                    <label for="card_num" class="col-sm-4 control-label">身份证号码/组织机构代码</label>
+                    <div class="col-sm-6">
                         <input type="text" class="form-control" id="card_num" name="card_num">
                     </div>
                 </div>
-                <div class="radio" style="display: inline-block">
-                    <div class="col-sm-offset-4 col-sm-8">
+                <div class="radio" style="display: inline-block;margin-left: 30%;margin-bottom: 15px">
                         <label class="radio">
                         <input type="radio" name="flag" id="company_flag" value="option1" data-toggle="radio" checked>
-                            企业号码
-                        </label></div>
+                            企业
+                        </label>
                 </div>
                 <div class="radio" style="display: inline-block">
-                    <div class="col-sm-offset-4 col-sm-8">
                         <label class="radio">
                         <input type="radio" name="flag" id="person_flag" value="option2" data-toggle="radio">
-                            个人号码
+                            个人
                         </label>
-                    </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-8">
+                    <div class="col-sm-offset-4 col-sm-8">
                          <label class="checkbox" for="history">
                             <input type="checkbox" value="" id="history" name="history" data-toggle="checkbox">
                                 历史记录
@@ -98,7 +95,7 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-9" style="margin-bottom: 30px">
+                    <div class="col-sm-offset-4 col-sm-6" style="margin-bottom: 30px">
                         <a role="button" class="btn btn-primary btn-block" id="checkButton"> 查询 </a>
                     </div>
                 </div>

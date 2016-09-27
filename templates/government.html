@@ -11,91 +11,59 @@
             type:"province",
             name:"all"
         }, function(data, status){
-                    data = eval(data);
-                    for (var i of data){
-                        $("#dopProvince").append("<option value='" + i + "'>" + i + "</option>");
+                    data = JSON.parse(data);
+                    for (var i in data){
+                        $("#dopProvince").append("<option value='" + data[i] + "'>" + data[i] + "</option>");
                     }
         });
-
         //当省份改变的时候
         $("#dopProvince").change(function() {
             var id = $("#dopProvince").val();
-                $.ajax({
-                    type: "POST",
-                    url: "{{ url_for('get_area') }}",
-                    data: { type: "city", name: id },
-                    success: function(data) {
-                        if (data == "fail") {
-                            alert("loading failed");
-                        }
-                        else {
-                            data = eval(data)
-                            $("#dopCity").empty();
-                            $("#dopCity").append("<option value=''>市区</option>");
-                            for (var i of data){
-                                if(i =='')
-                                    $("#dopCity").append("<option value=''>" + i + "</option>");
-                                else
-                                    $("#dopCity").append("<option value='" + i + "'>" + i + "</option>");
-                            }
-                        }
-                    }
-                });
+            $("#dopCity").empty();
+            $("#dopCity").append("<option value=''>市区</option>");
+            $.post("{{ url_for('get_area') }}", {
+                type: "city",
+                name: id
+            }, function (data, status) {
+                data = JSON.parse(data);
+                for (var i in data) {
+                    $("#dopCity").append("<option value='" + data[i] + "'>" + data[i] + "</option>");
+                }
+            });
         });
-
-        //当城市改变的时候
+{##}
+{#        //当城市改变的时候#}
         $("#dopCity").change(function() {
             var id = $("#dopCity").val();
-                $.ajax({
-                    type: "POST",
-                    url: "{{ url_for('get_area') }}",
-                    data: { type: "sub_city", name: id },
-                    success: function(data) {
-                        if (data == "fail") {
-                            alert("loading failed");
-                        }
-                        else {
-                            data = eval(data);
-                            $("#dopSubCity").empty();
-                            $("#dopSubCity").append("<option value=''>县镇</option>");
-                            for (var i of data){
-                                if(i =='')
-                                    $("#dopSubCity").append("<option value=''>" + i + "</option>");
-                                else
-                                    $("#dopSubCity").append("<option value='" + i + "'>" + i + "</option>");
-                            }
-                        }
-                    }
-                });
+            $("#dopSubCity").empty();
+            $("#dopSubCity").append("<option value=''>县镇</option>");
+            $.post("{{ url_for('get_area') }}", {
+                type: "sub_city",
+                name: id
+            }, function (data, status) {
+                data = JSON.parse(data);
+
+                for (var i in data) {
+                    $("#dopSubCity").append("<option value='" + data[i] + "'>" + data[i] + "</option>");
+                }
+            });
         });
-
-
-        //当城市改变的时候
+{#        //当城市改变的时候#}
         $("#dopSubCity").change(function() {
             var id = $("#dopSubCity").val();
-                $.ajax({
-                    type: "POST",
-                    url: "{{ url_for('get_area') }}",
-                    data: { type: "town_street", name: id },
-                    success: function(data) {
-                        if (data == "fail") {
-                            alert("loading failed");
-                        }
-                        else {
-                            data = eval(data);
-                            $("#dopStreet").empty();
-                            $("#dopStreet").append("<option value='街道'>街道</option>");
-                            for (var i of data){
-                                if(i =='')
-                                    $("#dopStreet").append("<option value=''>" + i + "</option>");
-                                else
-                                    $("#dopStreet").append("<option value='" + i + "'>" + i + "</option>");
-                            }
-                        }
-                    }
-                });
+            $("#dopStreet").empty();
+            $("#dopStreet").append("<option value=''>街道</option>");
+            $.post("{{ url_for('get_area') }}", {
+                type: "town_street",
+                name: id
+            }, function (data, status) {
+                data = JSON.parse(data);
+                for (var i in data) {
+                    $("#dopStreet").append("<option value='" + data[i] + "'>" + data[i] + "</option>");
+                }
+            });
         });
-    //点击查询
+{#    //点击查询#}
         $(".btn-primary").click(function () {
             $.post("{{ url_for('get_mess') }}",
                     {
