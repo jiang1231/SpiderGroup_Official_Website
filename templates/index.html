@@ -71,8 +71,9 @@
         text-align: center;
     }
     div p {
+        color: #444444;
         font-size: 15px;
-        font-style: italic;
+{#        font-style: italic;#}
         text-align: center;
         padding-left: 20px;
         padding-right: 20px;
@@ -131,6 +132,64 @@
     width: 100%;
     outline: none;
     }
+    #boom .button{
+        background-color: #e71e62;
+    border: medium none;
+    border-radius: 50px;
+    color: #fff;
+    float: none;
+    font-family: Montserrat,sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    height: 50px;
+    letter-spacing: 1px;
+    max-width: 349px;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+    outline: none;
+    }
+
+    .button{
+    background-color: rgb(1, 238, 255);
+    border: medium none;
+    border-radius: 50px;
+    color: #fff;
+    float: none;
+    font-size: 16px;
+    font-weight: 600;
+    height: 50px;
+    letter-spacing: 1px;
+    max-width: 349px;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 50%;
+    outline: none;
+    }
+
+    .button2{
+    background-color: rgb(0, 230, 193);
+    border: medium none;
+    border-radius: 50px;
+    color: #fff;
+    float: none;
+    font-size: 16px;
+    font-weight: 600;
+    height: 50px;
+    letter-spacing: 1px;
+    max-width: 349px;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 50%;
+    outline: none;
+    }
+
     li a {
         color: white;
     }
@@ -195,6 +254,13 @@
     -ms-flex-pack: justify;
     justify-content: space-between;
 }
+    .myheader {
+        text-align:center;
+        color: #fff;
+        font-size: 70px;
+        margin-top: 140px;
+        font-weight: bold
+    }
     </style>
 {% endblock %}
 {% block navbar %}
@@ -214,11 +280,14 @@
            </ul></div>
     </header>
 {#    <div class="bg" style="background-position: center -185.333px;">#}
-    <div style="padding-top:40px;max-width: 1920px;height: 700px;background: url('{{ url_for('static', filename='img/newbanner.jpg') }}') bottom/cover no-repeat">
+    <div id="boom" style="padding-top:40px;max-width: 1920px;height: 600px;background: url('{{ url_for('static', filename='img/newbanner.jpg') }}') top/cover no-repeat">
+        <p class="myheader"><span style="color: rgb(177, 222, 0)">B</span>oom <span style="color: rgb(177, 222, 0)">Sha</span>kalaka.</p>
+        <p style="text-align: center"><a type="button" href="#content" class="button" >Welcome to BoomShakalaka Date </a></p>
+
     </div>
     <div class="container" style="margin-bottom: 60px">
             <div class="row cold-md-12 text-center">
-                <br><h3><b style="color: #89ae00;">Why StartUps Investors trust us?</b></h3><br><br>
+                <br><h3><b style="color: #a5cc00;">Why StartUps Investors trust us?</b></h3><br><br>
             </div>
             <div class="row">
                 <div class="col-sm-4 text-center">
@@ -269,7 +338,7 @@
                 <a href="{{ url_for('dishonest_check') }}">
                     <img  src="{{ url_for('static', filename='img/remain2.png') }}" width="200px" style="margin-left: 22%"
                          />
-                    <h4 style="margin: -15px 0px 10px 0px">失信被执行人</h4>
+                    <h4 style="margin: -15px 0px 10px 0px"><button class="button">失信被执行人</button></h4>
                     <p> 不履行生效法律文书确定的义务的人，俗称老赖。
                     </p>
                 </a>
@@ -278,15 +347,15 @@
                 <a href="{{ url_for('dishonest_person') }}">
                     <img src="{{ url_for('static', filename='img/remain1.png') }}" width="200px" style="margin-left: 22%"
                          onmouseover="bigImg(this)" onmouseout="normalImg(this)"/>
-                                        <h4 style="margin: -15px 0px 10px 0px">被执行人</h4>
-                    <p> 被法院判决需要承担执行义务的人员。
+                                        <h4 style="margin: -15px 0px 10px 0px"><button class="button">被执行人</button></h4>
+                    <p> 被法院判决需要承担执行义务的人员。</p>
                 </a>
         </div>
         <div class="col-md-4">
                 <a href="#">
                     <img src="{{ url_for('static', filename='img/credit_report.png') }}" width="200px" style="margin-left: 22%"
                          onmouseover="bigImg(this)" onmouseout="normalImg(this)"/>
-                    <h4 style="margin: -15px 0px 10px 0px">征信报告</h4>
+                    <h4 style="margin: -15px 0px 10px 0px"><button class="button">征信报告</button></h4>
                     <p> 查询用户在中国人民银行征信中心的个人信用记录。</p>
                 </a>
         </div>
@@ -300,7 +369,7 @@
          <div class="col-md-4">
                  <a href="{{ url_for('check') }}">
                     <img src="{{ url_for('static', filename='img/search.png') }}" width="200px" style="margin-left: 22%"/>
-                     <h4 style="margin: -15px 0px 10px 0px">运营商</h4>
+                     <h4 style="margin: -15px 0px 10px 0px"><button class="button2">运营商</button></h4>
                     <p> 查询用户的通话记录、短信信息等，涵盖三大运营商。</p>
                 </a>
         </div>
@@ -308,7 +377,7 @@
                 <a href="{{ url_for('institution') }}">
                 <img src="{{ url_for('static', filename='img/government.png') }}" width="200px"
                      style="margin-left: 22%"/>
-                    <h4 style="margin: -15px 0px 10px 0px">政府机构</h4>
+                    <h4 style="margin: -15px 0px 10px 0px"><button class="button2">政府机构</button></h4>
                     <p>各级政府机关的联络方式查询，涵盖各省市。</p>
                 </a>
         </div>
@@ -316,7 +385,7 @@
                 <a href="#">
                     <img src="{{ url_for('static', filename='img/money_judge_gray.png') }}" width="200px"
                          style="margin-left: 22%"/>
-                    <h4 style="margin: -15px 0px 10px 0px">额度评估</h4>
+                    <h4 style="margin: -15px 0px 10px 0px"><button class="button2">额度评估</button></h4>
                     <p> 自动化审核用户信息通过模型计算得到相应的信用额度。</p>
                 </a>
         </div>
@@ -331,7 +400,7 @@
     <div class="container logo site-bottom">
         <section class="contact">
             <h3>联系我们</h3>
-            <p>Got a question or would like to schedule a one-on-one demo? Please use our contact form below and we’ll get back to you right away.</p>
+            <p style="color: #d0d0d0">Got a question or would like to schedule a one-on-one demo? Please use our contact form below and we’ll get back to you right away.</p>
             <div class="col-sm-11 col-sm-offset-1" style="padding-bottom: 50px;padding-top: 50px;">
                 <div id="contacted">
                     <input type="hidden" name="env" value="live" />
