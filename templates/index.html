@@ -323,7 +323,7 @@
     <div style="background-color: #f3f3f3;text-align: center;padding-top: 50px;padding-bottom: 80px" id="use">
     <h3 style="font: 35px 'Open Sans',sans-serif;font-weight: 400;color: #89ae00;"> Simple And Easy To Handle</h3>
             <p style="font-size: 25px"> Data scientist is just a sexed up word for a statistician </p>
-        <a type="button" href="#content" class="button2 btn btn-default" >Get Started Now! </a>
+        <a type="button" href="#content" class="button2 btn btn-danger" >Get Started Now! </a>
     </div>
 
     <div style="padding-bottom: 80px">
@@ -338,7 +338,7 @@
                 <a href="{{ url_for('dishonest_check') }}">
                     <img  src="{{ url_for('static', filename='img/remain2.png') }}" width="200px" style="margin-left: 22%"
                          />
-                    <h4 style="margin: -15px 0px 10px 0px"><button class="button">失信被执行人</button></h4>
+                    <h4 style="margin: -15px 0px 10px 0px"><button class="button btn btn-danger">失信被执行人</button></h4>
                     <p> 不履行生效法律文书确定的义务的人，俗称老赖。
                     </p>
                 </a>
@@ -347,7 +347,7 @@
                 <a href="{{ url_for('dishonest_person') }}">
                     <img src="{{ url_for('static', filename='img/remain1.png') }}" width="200px" style="margin-left: 22%"
                          onmouseover="bigImg(this)" onmouseout="normalImg(this)"/>
-                                        <h4 style="margin: -15px 0px 10px 0px"><button class="button">被执行人</button></h4>
+                                        <h4 style="margin: -15px 0px 10px 0px"><button class="button btn btn-danger">被执行人</button></h4>
                     <p> 被法院判决需要承担执行义务的人员。</p>
                 </a>
         </div>
@@ -355,7 +355,7 @@
                 <a href="#">
                     <img src="{{ url_for('static', filename='img/credit_report.png') }}" width="200px" style="margin-left: 22%"
                          onmouseover="bigImg(this)" onmouseout="normalImg(this)"/>
-                    <h4 style="margin: -15px 0px 10px 0px"><button class="button">征信报告</button></h4>
+                    <h4 style="margin: -15px 0px 10px 0px"><button class="button btn btn-danger">征信报告</button></h4>
                     <p> 查询用户在中国人民银行征信中心的个人信用记录。</p>
                 </a>
         </div>
@@ -369,7 +369,7 @@
          <div class="col-md-4">
                  <a href="{{ url_for('check') }}">
                     <img src="{{ url_for('static', filename='img/search.png') }}" width="200px" style="margin-left: 22%"/>
-                     <h4 style="margin: -15px 0px 10px 0px"><button class="button2">运营商</button></h4>
+                     <h4 style="margin: -15px 0px 10px 0px"><button class="button2 btn btn-inverse">运营商</button></h4>
                     <p> 查询用户的通话记录、短信信息等，涵盖三大运营商。</p>
                 </a>
         </div>
@@ -377,7 +377,7 @@
                 <a href="{{ url_for('institution') }}">
                 <img src="{{ url_for('static', filename='img/government.png') }}" width="200px"
                      style="margin-left: 22%"/>
-                    <h4 style="margin: -15px 0px 10px 0px"><button class="button2">政府机构</button></h4>
+                    <h4 style="margin: -15px 0px 10px 0px"><button class="button2 btn btn-inverse">政府机构</button></h4>
                     <p>各级政府机关的联络方式查询，涵盖各省市。</p>
                 </a>
         </div>
@@ -385,7 +385,7 @@
                 <a href="#">
                     <img src="{{ url_for('static', filename='img/money_judge_gray.png') }}" width="200px"
                          style="margin-left: 22%"/>
-                    <h4 style="margin: -15px 0px 10px 0px"><button class="button2">额度评估</button></h4>
+                    <h4 style="margin: -15px 0px 10px 0px"><button class="button2 btn btn-inverse">额度评估</button></h4>
                     <p> 自动化审核用户信息通过模型计算得到相应的信用额度。</p>
                 </a>
         </div>
