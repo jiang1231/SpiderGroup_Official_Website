@@ -23,15 +23,6 @@
 {% endblock %}
 
 {% block navbar %}
-    <style>
-      body {
-/*          padding-bottom: 10px;
-*//*          background-image:url("http://o6gcipdzi.bkt.clouddn.com/background2.jpg");
-          background-attachment:fixed;*/
-{#          background-color: #3a47ff;#}
-      }
-
-    </style>
     <!-- Static navbar -->
       <nav class="navbar navbar-default navbar-lg" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -41,10 +32,10 @@
           </button>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-          <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/pachongzu.png') }}" style="margin: 15px 0px 0px 30px;height:50px; float: left;"/></a>
+          <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/pachongzu1.png') }}" style="margin: 15px 0px 0px 30px;height:50px; float: left;"/></a>
 
         <div class="collapse navbar-collapse" id="navbar-collapse-5">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav navbar-right">
               <li><a href="{{ url_for('index') }}" style="font-size: 18px;"> 主页 </a></li>
               <li><a href="{{ url_for('check') }}" style="font-size: 18px;"> 运营商 </a></li>
               <li><a href="{{ url_for('institution') }}"style="font-size: 18px;"> 政府机构查询 </a></li>

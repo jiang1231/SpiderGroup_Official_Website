@@ -45,20 +45,20 @@
     position: absolute;font-weight: 200;
     width: 140px;
     text-align: center;
-    background: #ffffff;
+    background: #fff;
     margin-left: 49%;
     left: -65px;
     top: -22px;
     font-size: 23px;
     font-family: "微软雅黑";
 }
-    img {
+    .col-md-4 img {
 	    transition:All 0.4s ease-in-out;
 	    -webkit-transition:All 0.4s ease-in-out;
 	    -moz-transition:All 0.4s ease-in-out;
 	    -o-transition:All 0.4s ease-in-out;
 	}
-	img:hover {
+	.col-md-4 img:hover {
         transform:rotate(360deg) scale(1.15);
 	    -webkit-transform:rotate(360deg) scale(1.15);
 	    -moz-transform:rotate(360deg) scale(1.15);
@@ -112,13 +112,154 @@
         background-color: #e71e62;
         text-transform: uppercase;
 }
+    #use .button{
+        background-color: #e71e62;
+    border: medium none;
+    border-radius: 50px;
+    color: #fff;
+    float: none;
+    font-family: Montserrat,sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    height: 50px;
+    letter-spacing: 1px;
+    max-width: 349px;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+    outline: none;
+    }
+    li a {
+        color: white;
+    }
+    .polymerization {
+    width: 100%;
+    height: 440px;
+    letter-spacing: .5px;
+}
+    .polymerization .bg {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-image: url('{{ url_for('static', filename='img/newbanner.jpg') }}');
+    background-size: cover;
+    background-position: 50% -156px;
+    -webkit-transition: all .2s ease 0s;
+    transition: all .2s ease 0s;
+}
+    .polymerization .rectangle {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background-image: url('{{ url_for('static', filename='img/zhezhao.png') }}');
+    background-position: center center;
+    background-size: cover;
+}
+    .polymerization .content {
+    position: absolute;
+    z-index: 3;
+    top: 110px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 848px;
+    height: 150px;
+    margin: 0 auto;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+    .polymerization .content .top {
+    font-size: 30px;
+    text-align: center;
+    color: white;
+}
+    .polymerization .content .top + div {
+    font-size: 16px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    color: white;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
     </style>
 {% endblock %}
+{% block navbar %}
+{% endblock %}
 {% block page_content %}
-    <div class="jumbotron" style="margin-top:-30px;max-width: 1920px;height: 300px;background: url('{{ url_for('static', filename='img/banner.jpg') }}') top/cover no-repeat">
+    <header>
+      <div style="float: right;padding-top:20px;padding-right:20px;float: left;margin-left: 50px">
+          <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/pachongzu.png') }}" height="55px"/></a></div>
+          <div style="float: right;padding-top:20px;padding-right:20px;" >
+          <ul class="nav navbar-nav">
+              <li><a href="{{ url_for('index') }}" style="font-size: 18px;"> 主页 </a></li>
+              <li><a href="{{ url_for('check') }}" style="font-size: 18px;"> 运营商 </a></li>
+              <li><a href="{{ url_for('institution') }}"style="font-size: 18px;"> 政府机构查询 </a></li>
+              <li><a href="{{ url_for('dishonest_check') }}"style="font-size: 18px;"> 失信被执行人 </a></li>
+              <li><a href="{{ url_for('dishonest_person') }}"style="font-size: 18px;"> 被执行人 </a></li>
+              <li><a href="#"style="font-size: 18px;"> 征信报告 </a></li>
+           </ul></div>
+    </header>
+{#    <div class="bg" style="background-position: center -185.333px;">#}
+    <div style="padding-top:40px;max-width: 1920px;height: 700px;background: url('{{ url_for('static', filename='img/newbanner.jpg') }}') bottom/cover no-repeat">
     </div>
     <div class="container" style="margin-bottom: 60px">
-    <div class="row" style="margin-top: 50px">
+            <div class="row cold-md-12 text-center">
+                <br><h3><b style="color: #89ae00;">Why StartUps Investors trust us?</b></h3><br><br>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 text-center">
+                    <div class="feature">
+                        <i class="fui-mail" style="color: #5982f8;font-size: 70px;"></i>
+                        <h4>Data Privacy &amp; Full transparency</h4>
+                        <p>
+                        Connect and share privately and secure your startup data with potential and existing investors through our network.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <div class="feature">
+                        <i class="fui-time" style="color: #5982f8;font-size: 70px;"></i>
+                        <h4>Saves ridiculous amount of time</h4>
+                        <p>
+                        By sharing your data story with investors allows you to stay ridiculously focused on your startup instead of pitching it.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <div class="feature">
+                        <i class="fui-eye" style="color: #5982f8;font-size: 70px;"></i>
+                        <h4>Finally allows you to focus</h4>
+                        <p>
+                        Sharing your data from the early stage enables you to focus on your growth and build quality relationships with investors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+	</div>
+    <div style="background-color: #f3f3f3;text-align: center;padding-top: 50px;padding-bottom: 80px" id="use">
+    <h3 style="font: 35px 'Open Sans',sans-serif;font-weight: 400;color: #89ae00;"> Simple And Easy To Handle</h3>
+            <p style="font-size: 25px"> Data scientist is just a sexed up word for a statistician </p>
+        <a type="button" href="#content" class="button btn btn-default" >Get Started Now! </a>
+    </div>
+
+    <div style="padding-bottom: 80px">
+    <div class="container" id="content">
+    <div class="row" style="margin-top: 100px">
         <div class="case-wrap companyProductsWrap">
             <div class="word">
                 征信审核
@@ -181,11 +322,12 @@
         </div>
     </div>
     </div>
+    </div>
 <!--begin footer-->
  <div style="background-color:#3c4252; border-top:1px solid #ccc;">
 
  </div>
-<footer style="background-color:#3c4252">
+<footer style="background-color:rgb(39, 39, 39)">
     <div class="container logo site-bottom">
         <section class="contact">
             <h3>联系我们</h3>
