@@ -4,6 +4,54 @@
 {% endblock %}
 {% block head %}
 {{ super() }}
+    <link href="{{ url_for('static', filename='css/mycss/dishonest.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+{% block page_content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<form id="searchForm" class="my-form form-horizontal">
+				<p style="padding: 10px 0px 10px 20px;color: #f1f3f5">
+					<strong><span style="font-size: 30px;color: #1abc9c">被</span>执行人 </strong>
+				</p>
+				<div class="my-input">
+					<div class="form-group">
+						<label for="name" class="col-sm-4 control-label">被执行人姓名/名称</label>
+						<div class="col-sm-6">
+							<input type="text" class=" form-control" id="name" name="name">
+						</div>
+						<div class="col-sm-2">
+							<span style="color: red">*</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="card_num" class="col-sm-4 control-label">身份证号码/组织机构代码</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="card_num" name="card_num">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-8">
+							<label class="checkbox" for="history">
+							<input type="checkbox" value="" id="history" name="history" data-toggle="checkbox">
+                                历史记录
+							</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-6" style="margin-bottom: 30px">
+							<a role="button" class="btn btn-primary btn-block" id="checkButton"> 查询 </a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div id="result" style="margin-top: 80px">
+		</div>
+	</div>
+</div>
     <script>
     $(document).ready(function() {
         $("#checkButton").click(function () {
@@ -26,66 +74,4 @@
         });
     });
     </script>
-    <style>
-      .my-form {
-        -moz-box-shadow: 5px 5px 5px #888888; /* 老的 Firefox */
-{#        box-shadow: 4px 4px 4px #888888;#}
-        top: 80px;
-        background-color: #34495e;
-        border-radius: 12px;
-    }
-    div.my-input {
-        background-color: #dadcde;
-        padding-top: 30px;
-        border-radius: 0px 0px 10px 10px;
-    }
-    </style>
-{% endblock %}
-{% block page_content %}
-    <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <form id="searchForm" class="my-form form-horizontal" >
-                <p style="padding: 10px 0px 10px 20px;color: #f1f3f5"> <strong><span style="font-size: 30px;color: #1abc9c">被</span>执行人 </strong></p>
-                <div class="my-input">
-                <div class="form-group">
-                    <label for="name" class="col-sm-4 control-label">被执行人姓名/名称</label>
-                    <div class="col-sm-6">
-                        <input type="text" class=" form-control" id="name" name="name">
-                    </div>
-                    <div class="col-sm-2">
-                        <span style="color: red">*</span>
-                    </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="card_num" class="col-sm-4 control-label">身份证号码/组织机构代码</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="card_num" name="card_num">
-                        </div>
-                    </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-4 col-sm-8">
-                         <label class="checkbox" for="history">
-                            <input type="checkbox" value="" id="history" name="history" data-toggle="checkbox">
-                                历史记录
-                        </label>
-                    </div>
-                </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-6" style="margin-bottom: 30px">
-                            <a role="button" class="btn btn-primary btn-block" id="checkButton"> 查询 </a>
-                        </div>
-                    </div>
-
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div id="result" style="margin-top: 80px">
-        </div>
-    </div>
-    </div>
 {% endblock %}

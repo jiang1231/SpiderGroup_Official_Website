@@ -1,0 +1,13 @@
+.my-form {
+	-moz-box-shadow: 5px 5px 5px #888;
+	top: 5pc;
+	background-color: #34495e;
+	border-radius: 9pt
+}
+
+div.my-input {
+	background-color: #dadcde;
+	padding-top: 30px;
+	border-radius: 0 0 10px 10px;
+	padding-left: 10px;
+}

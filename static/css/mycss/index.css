@@ -1,0 +1,248 @@
+.footer-wrap {
+	margin-top: 300px;
+	width: 100%;
+	min-width: 64pc;
+	border-top: 1px solid #c7d4e0
+}
+
+.footer {
+	margin-bottom: 20px;
+	padding-top: 14px
+}
+
+.cbody {
+	margin: 0 auto;
+	width: 64pc
+}
+
+.clearfix {
+	+display: inline-block
+}
+
+.footer-nav {
+	float: left;
+	padding-left: 20px;
+	width: 78pt
+}
+
+ol,ul {
+	list-style-type: none
+}
+
+.case-wrap {
+	margin: 0 auto;
+	padding-top: 26px;
+	padding-bottom: 26px;
+	width: 64pc;
+	border-top: 1px solid #c7d4e0
+}
+
+.companyProductsWrap {
+	position: relative
+}
+
+.word {
+	position: absolute;
+	top: -22px;
+	left: -65px;
+	margin-left: 49%;
+	width: 140px;
+	background: #fff;
+	color: #617385;
+	text-align: center;
+	font-weight: 200;
+	font-size: 23px;
+	font-family: "微软雅黑"
+}
+
+.col-md-4 img {
+	-webkit-transition: All .4s ease-in-out;
+	-moz-transition: All .4s ease-in-out;
+	-o-transition: All .4s ease-in-out;
+	transition: All .4s ease-in-out
+}
+
+.col-md-4 img:hover {
+	-webkit-transform: rotate(360deg) scale(1.15);
+	-moz-transform: rotate(360deg) scale(1.15);
+	-o-transform: rotate(360deg) scale(1.15);
+	transform: rotate(360deg) scale(1.15);
+	-ms-transform: rotate(360deg) scale(1.15)
+}
+
+div h4 {
+	font-weight: 700;
+	font-size: 20px
+}
+
+div h4,div p {
+	text-align: center
+}
+
+div p {
+	padding-right: 20px;
+	padding-left: 20px;
+	color: #444;
+	font-size: 15px
+}
+
+#contacted .name,.email {
+	height: 50px;
+	border-radius: 50px
+}
+
+#contacted .comment,#contacted .name,.email {
+	padding-left: 30px;
+	font-weight: 300;
+	font-size: 17px;
+	font-family: Roboto,sans-serif
+}
+
+#contacted .comment {
+	height: 75pt;
+	border-radius: 20px
+}
+
+.contact h3 {
+	text-align: center
+}
+
+#contacted .button {
+	float: right;
+	margin-top: 15px;
+	padding-right: 25px;
+	padding-left: 25px;
+	height: 50px;
+	border: none;
+	border-radius: 50px;
+	background-color: #e71e62;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 600;
+	font-size: 14px;
+	font-family: Montserrat,sans-serif
+}
+
+#boom .button,#use .button {
+	float: none;
+	padding: 15px 25px;
+	width: 100%;
+	height: 50px;
+	max-width: 349px;
+	outline: 0;
+	border: medium none;
+	border-radius: 50px;
+	background-color: #e71e62;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 600;
+	font-size: 14px;
+	font-family: Montserrat,sans-serif
+}
+
+.button {
+	background-color: #01eeff
+}
+
+.button,.button2 {
+	float: none;
+	padding: 15px 25px;
+	width: 50%;
+	height: 50px;
+	max-width: 349px;
+	outline: 0;
+	border: medium none;
+	border-radius: 50px;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 600;
+	font-size: 1pc
+}
+
+.button2 {
+	background-color: #00e6c1
+}
+
+li a {
+	color: #fff
+}
+
+.polymerization {
+	width: 100%;
+	height: 440px;
+	letter-spacing: .5px
+}
+
+.polymerization .bg {
+	z-index: 1;
+	background-image: url(../img/newbanner.jpg);
+	background-position: 50% -156px;
+	-webkit-transition: all .2s ease 0s;
+	transition: all .2s ease 0s
+}
+
+.polymerization .bg,.polymerization .rectangle {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-size: cover
+}
+
+.polymerization .rectangle {
+	z-index: 2;
+	background-position: center center
+}
+
+.polymerization .content {
+	position: absolute;
+	top: 110px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 3;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	margin: 0 auto;
+	width: 53pc;
+	height: 150px;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between
+}
+
+.polymerization .content .top {
+	color: #fff;
+	text-align: center;
+	font-size: 30px
+}
+
+.polymerization .content .top+div {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	color: #fff;
+	font-size: 1pc;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between
+}
+
+.myheader {
+	margin-top: 140px;
+	color: #fff;
+	text-align: center;
+	font-weight: 700;
+	font-size: 70px
+}

@@ -4,50 +4,7 @@
 {% endblock %}
 {% block head %}
 {{ super() }}
-    <script>
-    $(document).ready(function() {
-        var flag = 1;
-        $("#checkButton").click(function () {
-            if ($("#name").val()) {
-                $("#checkButton").attr("disabled", true);
-                $.post('{{ url_for('dishonest_check') }}',
-                        {
-                            name: $("#name").val(),
-                            card_num: $('#card_num').val(),
-                            flag: flag
-                        },
-                        function (data, status) {
-                            $('#result').empty();
-                            $('#result').append(data);
-                            $("#checkButton").attr('disabled', false);
-                        });
-            }
-            else {
-                $("#name").attr("style", "border-style: solid;border-color:red;")
-            }
-        });
-        $("#company_flag").click(function () {
-            flag = 1;
-        })
-        $("#person_flag").click(function () {
-            flag = 0;
-        })
-    });
-    </script>
-    <style>
-        .my-form {
-        -moz-box-shadow: 5px 5px 5px #888888; /* 老的 Firefox */
-{#        box-shadow: 4px 4px 4px #888888;#}
-        top: 80px;
-        background-color: #34495e;
-        border-radius: 12px;
-    }
-    div.my-input {
-        background-color: #dadcde;
-        padding-top: 30px;
-        border-radius: 0px 0px 10px 10px;
-    }
-    </style>
+    <link href="{{ url_for('static', filename='css/mycss/dishonest.css') }}" type="text/css" rel="stylesheet">
 {% endblock %}
 {% block page_content %}
     <div class="container">
@@ -111,4 +68,35 @@
         </div>
     </div>
     </div>
+
+      <script>
+    $(document).ready(function() {
+        var flag = 1;
+        $("#checkButton").click(function () {
+            if ($("#name").val()) {
+                $("#checkButton").attr("disabled", true);
+                $.post('{{ url_for('dishonest_check') }}',
+                        {
+                            name: $("#name").val(),
+                            card_num: $('#card_num').val(),
+                            flag: flag
+                        },
+                        function (data, status) {
+                            $('#result').empty();
+                            $('#result').append(data);
+                            $("#checkButton").attr('disabled', false);
+                        });
+            }
+            else {
+                $("#name").attr("style", "border-style: solid;border-color:red;")
+            }
+        });
+        $("#company_flag").click(function () {
+            flag = 1;
+        })
+        $("#person_flag").click(function () {
+            flag = 0;
+        })
+    });
+    </script>
 {% endblock %}
