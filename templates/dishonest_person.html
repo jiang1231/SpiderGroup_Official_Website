@@ -7,51 +7,94 @@
     <link href="{{ url_for('static', filename='css/mycss/dishonest.css') }}" type="text/css" rel="stylesheet">
 {% endblock %}
 {% block page_content %}
-<div class="container">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<form id="searchForm" class="my-form form-horizontal">
-				<p style="padding: 10px 0px 10px 20px;color: #f1f3f5">
-					<strong><span style="font-size: 30px;color: #1abc9c">被</span>执行人 </strong>
-				</p>
-				<div class="my-input">
-					<div class="form-group">
-						<label for="name" class="col-sm-4 control-label">被执行人姓名/名称</label>
-						<div class="col-sm-6">
-							<input type="text" class=" form-control" id="name" name="name">
-						</div>
-						<div class="col-sm-2">
-							<span style="color: red">*</span>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="card_num" class="col-sm-4 control-label">身份证号码/组织机构代码</label>
-						<div class="col-sm-6">
-							<input type="text" class="form-control" id="card_num" name="card_num">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-4 col-sm-8">
-							<label class="checkbox" for="history">
-							<input type="checkbox" value="" id="history" name="history" data-toggle="checkbox">
-                                历史记录
-							</label>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-4 col-sm-6" style="margin-bottom: 30px">
-							<a role="button" class="btn btn-primary btn-block" id="checkButton"> 查询 </a>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-	<div class="row">
-		<div id="result" style="margin-top: 80px">
-		</div>
-	</div>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form id="searchForm" class="my-form form-horizontal">
+                    <p style="padding: 10px 0px 10px 20px;color: #f1f3f5">
+                        <strong><span style="font-size: 30px;color: #1abc9c">被</span>执行人 </strong>
+                    </p>
+                    <div class="my-input">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-4 control-label">被执行人姓名/名称</label>
+                            <div class="col-sm-6">
+                                <input type="text" class=" form-control" id="name" name="name">
+                            </div>
+                            <div class="col-sm-2">
+                                <span style="color: red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="card_num" class="col-sm-4 control-label">身份证号码/组织机构代码</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="card_num" name="card_num">
+                            </div>
+                        </div>
+                            <div class="form-group">
+                        <label for="name" class="col-sm-4 control-label">执行法院范围</label>
+                        <div class="col-sm-6">
+                            <select id='court' data-toggle="select" class="form-control select select-inverse mrs mbm">
+                                <option value="0">----------------全部----------------</option>
+                                <option value="660">北京高院</option>
+                                <option value="661">天津高院</option>
+                                <option value="662">河北高院</option>
+                                <option value="663">山西高院</option>
+                                <option value="664">内蒙古高院</option>
+                                <option value="665">辽宁高院</option>
+                                <option value="666">吉林高院</option>
+                                <option value="667">黑龙江高院</option>
+                                <option value="668">上海高院</option>
+                                <option value="669">江苏高院</option>
+                                <option value="670">浙江高院</option>
+                                <option value="671">安徽高院</option>
+                                <option value="672">福建高院</option>
+                                <option value="673">江西高院</option>
+                                <option value="674">山东高院</option>
+                                <option value="675">河南高院</option>
+                                <option value="676">湖北高院</option>
+                                <option value="677">湖南高院</option>
+                                <option value="678">广东高院</option>
+                                <option value="679">广西高院</option>
+                                <option value="680">海南高院</option>
+                                <option value="681">重庆高院</option>
+                                <option value="682">四川高院</option>
+                                <option value="683">贵州高院</option>
+                                <option value="684">云南高院</option>
+                                <option value="685">西藏高院</option>
+                                <option value="686">陕西高院</option>
+                                <option value="687">甘肃高院</option>
+                                <option value="688">青海高院</option>
+                                <option value="689">宁夏高院</option>
+                                <option value="690">新疆高院</option>
+                                <option value="691">香港高院</option>
+                                <option value="692">澳门高院</option>
+                                <option value="693">台湾高院</option>
+                            </select>
+                        </div>
+                    </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-8">
+                                <label class="checkbox" for="history">
+                                <input type="checkbox" value="" id="history" name="history" data-toggle="checkbox">
+                                    历史记录
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-6" style="margin-bottom: 30px">
+                                <a role="button" class="btn btn-primary btn-block" id="checkButton"> 查询 </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div id="result" style="margin-top: 80px">
+            </div>
+        </div>
+    </div>
+
     <script>
     $(document).ready(function() {
         $("#checkButton").click(function () {
@@ -60,7 +103,8 @@
                 $.post('{{ url_for('dishonest_person') }}',
                         {
                             name: $("#name").val(),
-                            card_num: $('#card_num').val(),
+                            card_num: $("#card_num").val(),
+                            court: $("#court").val()
                         },
                         function (data, status) {
                             $('#result').empty();

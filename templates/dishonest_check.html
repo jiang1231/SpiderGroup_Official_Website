@@ -21,12 +21,53 @@
                     <div class="col-sm-2">
                         <span style="color: red;text-align: left">*</span>
                     </div>
-
                 </div>
                 <div class="form-group">
                     <label for="card_num" class="col-sm-4 control-label">身份证号码/组织机构代码</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="card_num" name="card_num">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="col-sm-4 control-label">省份</label>
+                    <div class="col-sm-6">
+                        <select id='province' data-toggle="select" class="form-control select select-inverse mrs mbm" name="province">
+                            <option value="0">----------------全部----------------</option>
+                            <option value="660">北京</option>
+                            <option value="661">天津</option>
+                            <option value="662">河北</option>
+                            <option value="663">山西</option>
+                            <option value="664">内蒙古</option>
+                            <option value="665">辽宁</option>
+                            <option value="666">吉林</option>
+                            <option value="667">黑龙江</option>
+                            <option value="668">上海</option>
+                            <option value="669">江苏</option>
+                            <option value="670">浙江</option>
+                            <option value="671">安徽</option>
+                            <option value="672">福建</option>
+                            <option value="673">江西</option>
+                            <option value="674">山东</option>
+                            <option value="675">河南</option>
+                            <option value="676">湖北</option>
+                            <option value="677">湖南</option>
+                            <option value="678">广东</option>
+                            <option value="679">广西</option>
+                            <option value="680">海南</option>
+                            <option value="681">重庆</option>
+                            <option value="682">四川</option>
+                            <option value="683">贵州</option>
+                            <option value="684">云南</option>
+                            <option value="685">西藏</option>
+                            <option value="686">陕西</option>
+                            <option value="687">甘肃</option>
+                            <option value="688">青海</option>
+                            <option value="689">宁夏</option>
+                            <option value="690">新疆</option>
+                            <option value="691">香港</option>
+                            <option value="692">澳门</option>
+                            <option value="693">台湾</option>
+                        </select>
                     </div>
                 </div>
                 <div class="radio" style="display: inline-block;margin-left: 30%;margin-bottom: 15px">
@@ -41,7 +82,6 @@
                             个人
                         </label>
                 </div>
-
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-8">
                          <label class="checkbox" for="history">
@@ -62,14 +102,14 @@
         </div>
     </div>
 
-
+<!-- 结果输出的位置 预占 -->
     <div class="row">
         <div id="result" style="margin-top: 80px">
         </div>
     </div>
     </div>
 
-      <script>
+    <script>
     $(document).ready(function() {
         var flag = 1;
         $("#checkButton").click(function () {
@@ -79,7 +119,8 @@
                         {
                             name: $("#name").val(),
                             card_num: $('#card_num').val(),
-                            flag: flag
+                            flag: flag,
+                            province: $('#province').val()
                         },
                         function (data, status) {
                             $('#result').empty();
