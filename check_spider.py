@@ -11,6 +11,9 @@ from flask.ext.script import Manager
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root@localhost:3306/spider'
+# 工作MySql路径
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://pbb:pbb@123___@rm-wz9z97an1up0y6h7b.mysql.rds.aliyuncs.com:3306/spider'
+
 app.config['DEBUG'] = True
 db.init_app(app)
 manager = Manager(app)
