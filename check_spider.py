@@ -1,16 +1,22 @@
 # coding=utf-8
 import json
-from flask import Flask, render_template, request
+import sys
+from datetime import datetime
+from flask import Flask, render_template, request, session, redirect, url_for
 from models import db, Institution, DishonestExecutor, ExecutedPerson
 from sqlalchemy import distinct
-from zhixing_spider.zhixing_search import zhixingSearchAPI
-from shixin_spider.shixin_search import shixinSearchAPI
+from spider import zhixingSearchAPI
+from spider import shixinSearchAPI
 from operator_result_temp import result
-from phone_attr import getAttributes
-from flask.ext.script import Manager
+from spider import  getPhoneAttr
+from flask_script import Manager
+from get_month import getMonthSeq
+from spider import chinaUnicomAPI # 联通
+from spider import getNoteCode, loginSys  # 移动
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root@localhost:3306/spider'
+app.secret_key = 'spider'
 # 工作MySql路径
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://pbb:pbb@123___@rm-wz9z97an1up0y6h7b.mysql.rds.aliyuncs.com:3306/spider'
 
@@ -39,31 +45,71 @@ def check():
     return render_template('operators.html')
 
 
+@app.route('/get_data_by_month/<date>')
+def get_phone_data_by_month(date):
+    '''
+    获取最近6个月的记录 其中所有数据在登录的时候已经获取并存进了g变量
+    :param month: 月份
+    :return: 渲染后的结果
+    '''
+    phone_result = session["phone_result"]
+    month_list = getMonthSeq()
+    operator_call = filter(lambda a: a["call_date"].startswith(date), phone_result["t_operator_call"])
+    operator_note = filter(lambda a: a["note_date"].startswith(date), phone_result["t_operator_note"])
+    return render_template('operator_output.html', user=phone_result['t_operator_user'][0], month_list=month_list,
+                           this_month=date,  operator_call=operator_call, operator_note=operator_note)
+
+
 @app.route('/get_data_union/<number>/<password>')
 def get_data_union(number, password):
     """暂时返回默认结果 operator_output.html result是外部导入 益华编的字典 """
-    return render_template('operator_output.html', user=result['t_operator_user'][0],
-                           operator_call=result['t_operator_call'], operator_note=result['t_operator_note'])
+    print 'in'
+    session["phone_attr"]["password"] = password
+    result = chinaUnicomAPI(session["phone_attr"])
+    if result["code"] == 2000:
+        session["phone_result"] = result["data"]
+        date = datetime.now().strftime("%Y-%m")
+        return redirect(url_for("get_phone_data_by_month", date=date))
+    else:
+        return '&' + result["desc"]
+
+
+@app.route('/get_vcode')
+def get_vcode():
+    result = getNoteCode(session["phone_attr"])
+    print result["code"]
+    if result["code"] == 2000:
+        session['result'] = result["temp"]
+        print result["temp"]
+        return u"验证码已经在路上"
+    else:
+        return result["desc"]
 
 
 @app.route('/get_data_mobile/<number>/<password>/<vcode>')
 def get_data_mobile(number, password, vcode):
     """暂时不用"""
-    # r = chinaUnicomAPI(number, password)
-    # try:
-    #     r['t_china_unicom_uesr']
-    # except KeyError:
-    #     return 'error'
-    #
-    # return render_template('output.html', user=r['t_china_unicom_uesr'][0])
-    return "{} {} {}".format(number, password, vcode)
+    session["phone_obj"].phone_attr["password"] = password
+    session["phone_obj"].phone_attr['phone_pwd'] = vcode
+    login_result = loginSys(session["phone_obj"])
+    if login_result['code'] == 2000:
+        session['result'] = login_result['result']
+        date = datetime.now().strftime("%Y-%m")
+        return redirect(url_for("get_phone_data_by_month", date=date))
+    else:
+
+        return '&' + result["desc"]
 
 
 @app.route('/check_phone_number/<number>')
 def check_phone_number(number):
-    """查询号码归属及类型api 其中getAttributes是调用益华的查询脚本"""
-    ret = getAttributes(number)
-    return json.dumps(ret)
+    """查询号码归属及类型api 其中getPhoneAttr是调用的查询脚本"""
+    ret = getPhoneAttr(number)
+    if ret['code'] == 2000:
+        session["phone_attr"] = ret["data"]
+        return json.dumps(ret['data'])
+    else:
+        return '&' + ret['desc']
 
 
 @app.route('/institution')
@@ -140,7 +186,7 @@ def dishonest_check():
         if d:
             return render_template('dishonest_executor_output.html', DishonestExecutors=d)
         else:
-            d = shixinSearchAPI(company_name, card_num)
+            d = shixinSearchAPI(company_name, card_num)['data']
             print d
             if d and d['t_shixin_valid']:
                 d = d['t_shixin_valid']
@@ -166,7 +212,7 @@ def dishonest_person():
         if d:
             return render_template('dishonest_person_output.html', DishonestPeople=d)
         else:
-            d = zhixingSearchAPI(company_name, card_num)
+            d = zhixingSearchAPI(company_name, card_num)['data']
             if d['t_zhixing_valid']:
                 print d
                 d = d['t_zhixing_valid']

@@ -19,7 +19,13 @@
         <span style="margin-right: 20px;">{{ user['address'] }}</span>
     </p>
 </div>
-
+    <div id="searchTime" >
+        <ul class="score_list_ul score_list_min ">
+        {% for m in month_list %}
+            <li class="{% if m == this_month %}on{% endif %}" name="{{ m }}">{{ m[:4]}}年{{ m[4:] }}月</li>
+        {% endfor %}
+        </ul>
+    </div>
 <div style="margin-top: 40px">
     <ul class="nav nav-tabs">
         <li role="presentation" class="active" id="calls"><a><span class="fui-time"> 通话详情</span></a></li>
@@ -423,5 +429,15 @@
             $("#notes-page").show();
             $("#notes-table").show();
 
+    });
+    $("#searchTime").find('li').click(function () {
+{#        alert($(this).val());#}
+        $("#searchTime").find("li").each(function () {
+            $(this).removeClass("on");
+        });
+        $(this).addClass("on");
+        $.get('/get_data_by_month/' + $(this).attr('name'), function (data, status) {
+            $("#result").html(data);
+        });
     });
 </script>

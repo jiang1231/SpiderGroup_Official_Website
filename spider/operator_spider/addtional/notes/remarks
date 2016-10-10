@@ -1,0 +1,13 @@
+登录函数可能会返回的情况
+
+case1:('7999')  解决方法:挂起然后重传
+jQuery172000024585669494775475_1468770450339({resultCode:"7999",redirectURL:"http://www.10010.com",errDesc:"null",msg:'系统忙，请稍后再试！',needvode:"0",errorFrom:"null"});
+
+case2:('0000')  登陆成功
+jQuery172000024585669494775475_1468770450339({resultCode:"0000",redirectURL:"http://www.10010.com"});
+
+case3:('7007'):  密码出错（2次重输机会）
+jQuery172000024585669494775475_1468770450339({resultCode:"7007",redirectURL:"http://www.10010.com",errDesc:"null",msg:'用户名或密码不正确......
+
+case4:('7072')  账号错误
+jQuery172000024585669494775475_1468770450339({resultCode:"7072",redirectURL:"http://www.10010.com",errDesc:"null",msg:'系统忙，请稍后再试。',needvode:"1",errorFrom:"bss"});
